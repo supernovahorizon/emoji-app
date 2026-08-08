@@ -27,7 +27,12 @@ public final class KeyboardViewModel: ObservableObject {
         self.loadFailed = loadFailed
         self.panel = initialPanel
         self.shiftState = .off
-        let prefs = store.load()
+        var prefs = store.load()
+        // Migrate older default ("system") to KATSEYE.
+        if prefs.themeId == "system" {
+            prefs.themeId = KeyboardTheme.katseye.id
+            store.save(prefs)
+        }
         self.preferences = prefs
         self.selectedCategoryId = catalog.resolvedCategoryId(selected: prefs.selectedCategoryId)
     }

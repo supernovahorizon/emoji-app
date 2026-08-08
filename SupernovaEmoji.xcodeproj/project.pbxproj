@@ -15,6 +15,7 @@
 		1E649F88DFBCC96ECEA52151 /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C898B199ACD6EB550E68DA88 /* CatalogTests.swift */; };
 		220FA84785C487932FF92216 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
 		292D1E5B79E94A0233F424E2 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
+		2B649FBD29C506C4E2C25F8B /* KeyboardThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1200041008AF22D99FF242C /* KeyboardThemePalette.swift */; };
 		2E8F965CB716D9C26F03B3E3 /* KeyboardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */; };
 		30F889DC9F62446EC3456F21 /* KeyboardRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E40F6CC95402EA165FE2F9 /* KeyboardRootView.swift */; };
 		33783714E39E8EE3D333D4E1 /* KeyboardPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */; };
@@ -147,6 +148,7 @@
 		C53ABEC036AC5B39846FA8BE /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		C898B199ACD6EB550E68DA88 /* CatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTests.swift; sourceTree = "<group>"; };
 		CA34875861707708CED8CB97 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		D1200041008AF22D99FF242C /* KeyboardThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardThemePalette.swift; sourceTree = "<group>"; };
 		DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputHandling.swift; sourceTree = "<group>"; };
 		ED317502A13DE0E084BB68F0 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		ED9576046F13372728A5D2CD /* KeyboardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTheme.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				B9FA4C5B4AB2E490865EC7A6 /* EnglishKeyboardView.swift */,
 				9DD29EA09ADE75EF9DCF2DE2 /* Info.plist */,
 				58E40F6CC95402EA165FE2F9 /* KeyboardRootView.swift */,
+				D1200041008AF22D99FF242C /* KeyboardThemePalette.swift */,
 				CA34875861707708CED8CB97 /* KeyboardViewController.swift */,
 			);
 			path = SupernovaEmojiKeyboard;
@@ -567,6 +570,7 @@
 				9145DA381CD8208B0F3136A0 /* KeyboardPreferencesStore.swift in Sources */,
 				30F889DC9F62446EC3456F21 /* KeyboardRootView.swift in Sources */,
 				A3C0D196AF4795E7B2393425 /* KeyboardTheme.swift in Sources */,
+				2B649FBD29C506C4E2C25F8B /* KeyboardThemePalette.swift in Sources */,
 				F3B87F4474BBA8CA23C92E5F /* KeyboardViewController.swift in Sources */,
 				8B4A842CBE67B4D14E494A88 /* KeyboardViewModel.swift in Sources */,
 				A174C8DA8864F65EC6000B38 /* TextInputHandling.swift in Sources */,

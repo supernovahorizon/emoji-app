@@ -9,6 +9,10 @@ struct EnglishKeyboardView: View {
     private let keySpacing: CGFloat = 5
     private let rowSpacing: CGFloat = 7
 
+    private var palette: KeyboardThemePalette {
+        KeyboardThemePalette(theme: viewModel.preferences.theme, colorScheme: colorScheme)
+    }
+
     var body: some View {
         GeometryReader { geo in
             let rowCount: CGFloat = 4
@@ -106,10 +110,10 @@ struct EnglishKeyboardView: View {
             viewModel.insertKey(key)
         } label: {
             Text(label)
-                .font(.system(size: letterSize(for: label, base: letterFont), weight: .medium, design: .rounded))
-                .foregroundStyle(.primary)
+                .font(.system(size: letterSize(for: label, base: letterFont), weight: .semibold, design: .rounded))
+                .foregroundStyle(palette.letterKeyText)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(keyBackground)
+                .background(letterKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                 .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -118,14 +122,18 @@ struct EnglishKeyboardView: View {
     }
 
     private func shiftKey(height: CGFloat, width: CGFloat) -> some View {
-        Button {
+        let active = viewModel.shiftState != .off
+        return Button {
             viewModel.cycleShift()
         } label: {
             Image(systemName: shiftSymbol)
                 .font(.system(size: max(15, height * 0.36), weight: .semibold, design: .rounded))
-                .foregroundStyle(shiftForeground)
+                .foregroundStyle(active ? palette.shiftActiveText : palette.actionKeyText)
                 .frame(width: width, height: height)
-                .background(shiftBackground)
+                .background(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .fill(active ? palette.shiftActiveFill : palette.actionKeyFill)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -138,6 +146,7 @@ struct EnglishKeyboardView: View {
         } label: {
             Image(systemName: "delete.left")
                 .font(.system(size: max(15, height * 0.36), weight: .semibold, design: .rounded))
+                .foregroundStyle(palette.actionKeyText)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -156,6 +165,7 @@ struct EnglishKeyboardView: View {
         } label: {
             Text(modeKeyTitle)
                 .font(.system(size: max(13, height * 0.28), weight: .semibold, design: .rounded))
+                .foregroundStyle(palette.actionKeyText)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -174,6 +184,7 @@ struct EnglishKeyboardView: View {
         } label: {
             Text(viewModel.panel == .numbers ? "#+=" : "123")
                 .font(.system(size: max(11, height * 0.24), weight: .semibold, design: .rounded))
+                .foregroundStyle(palette.actionKeyText)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -188,6 +199,7 @@ struct EnglishKeyboardView: View {
         } label: {
             Image(systemName: "globe")
                 .font(.system(size: max(16, height * 0.36), weight: .medium, design: .rounded))
+                .foregroundStyle(palette.actionKeyText)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -200,10 +212,12 @@ struct EnglishKeyboardView: View {
         Button {
             viewModel.insertSpace()
         } label: {
-            Text("space")
-                .font(.system(size: max(14, height * 0.3), weight: .medium, design: .rounded))
+            Text(viewModel.preferences.theme.id == "katseye" ? "KATSEYE" : "space")
+                .font(.system(size: max(13, height * 0.28), weight: .bold, design: .rounded))
+                .tracking(viewModel.preferences.theme.id == "katseye" ? 1.2 : 0)
+                .foregroundStyle(palette.letterKeyText)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(keyBackground)
+                .background(letterKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -214,8 +228,8 @@ struct EnglishKeyboardView: View {
         Button {
             viewModel.showPanel(.emoji)
         } label: {
-            Text("😊")
-                .font(.system(size: max(20, height * 0.45)))
+            Text("👁️")
+                .font(.system(size: max(18, height * 0.42)))
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -231,8 +245,11 @@ struct EnglishKeyboardView: View {
             Text("return")
                 .font(.system(size: max(12, height * 0.26), weight: .semibold, design: .rounded))
                 .frame(width: width, height: height)
-                .background(returnBackground)
-                .foregroundStyle(returnForeground)
+                .background(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .fill(palette.returnKeyFill)
+                )
+                .foregroundStyle(palette.returnKeyText)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -241,40 +258,15 @@ struct EnglishKeyboardView: View {
 
     // MARK: Appearance
 
-    private var keyBackground: some View {
+    private var letterKeyBackground: some View {
         RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(colorScheme == .dark ? Color(white: 0.34) : Color.white)
-            .shadow(color: .black.opacity(colorScheme == .dark ? 0.35 : 0.12), radius: 0.5, y: 1)
+            .fill(palette.letterKeyFill)
+            .shadow(color: palette.keyShadow, radius: 0.5, y: 1)
     }
 
     private var actionKeyBackground: some View {
         RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(colorScheme == .dark ? Color(white: 0.22) : Color(white: 0.78))
-    }
-
-    private var shiftBackground: some View {
-        let active = viewModel.shiftState != .off
-        return RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(
-                active
-                    ? (colorScheme == .dark ? Color.white : Color.black.opacity(0.85))
-                    : (colorScheme == .dark ? Color(white: 0.22) : Color(white: 0.78))
-            )
-    }
-
-    private var shiftForeground: Color {
-        viewModel.shiftState == .off
-            ? .primary
-            : (colorScheme == .dark ? .black : .white)
-    }
-
-    private var returnBackground: some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(Color.accentColor.opacity(colorScheme == .dark ? 0.85 : 1))
-    }
-
-    private var returnForeground: Color {
-        .white
+            .fill(palette.actionKeyFill)
     }
 
     private var shiftSymbol: String {

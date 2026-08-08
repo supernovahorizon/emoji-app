@@ -12,14 +12,16 @@ public struct KeyboardTheme: Identifiable, Hashable, Codable, Sendable {
         self.isDefault = isDefault
     }
 
-    public static let system = KeyboardTheme(id: "system", name: "System", isDefault: true)
+    /// KATSEYE-inspired: deep night black + dreamy pink (EYEKON vibes).
+    public static let katseye = KeyboardTheme(id: "katseye", name: "KATSEYE", isDefault: true)
+    public static let system = KeyboardTheme(id: "system", name: "System")
     public static let soft = KeyboardTheme(id: "soft", name: "Soft")
     public static let highContrast = KeyboardTheme(id: "highContrast", name: "High Contrast")
 
-    public static let all: [KeyboardTheme] = [.system, .soft, .highContrast]
+    public static let all: [KeyboardTheme] = [.katseye, .system, .soft, .highContrast]
 
     public static func resolve(id: String?) -> KeyboardTheme {
-        guard let id else { return .system }
-        return all.first(where: { $0.id == id }) ?? .system
+        guard let id else { return .katseye }
+        return all.first(where: { $0.id == id }) ?? .katseye
     }
 }
