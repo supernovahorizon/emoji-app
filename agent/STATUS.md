@@ -1,18 +1,19 @@
 # Status
 
-- **Current phase:** Initial MVP bootstrap (complete for non-blocked work)
+- **Current phase:** KATSEYE pastel theme (asset kit V2) implemented
 - **Current branch:** `feat/keyboard-mvp`
-- **Latest validated commit:** see `git log -1 --oneline` on branch
+- **Latest validated commit:** see `git log -1 --oneline`
 - **What works:**
-  - Simulator build of app + embedded keyboard
-  - Unit tests for catalog, preferences, input actions
-  - Companion app screens (welcome, privacy, enablement, explorer, themes, help, diagnostics)
-  - Keyboard UI (categories, grid, insert, backspace, globe)
-  - Privacy/scripts/CI baseline
-- **Tests currently passing:** SupernovaEmojiTests, SupernovaEmojiKeyboardTests (simulator)
-- **Physical-device state:** iPhone 13 Pro detected (iOS 26.5.2); device build OK; app installed; launch blocked until user trusts developer profile
-- **Known blockers:** Trust Developer App on device; keyboard must be enabled manually in iOS Settings; Full Access must stay OFF
+  - English QWERTY + emoji panels
+  - KeyboardMetrics anti-zoom clamps
+  - KATSEYE pastel theme (`katseye.pastel`) with personal photo background
+  - KATSEYE category with Unicode combos
+  - GemEye app icon
+  - Companion Themes preview
+- **Tests currently passing:** unit suite including KatseyeCatalogTests + KeyboardMetricsTests
+- **Physical-device state:** build/install/launch attempted after theme work
+- **Known blockers:** keyboard enablement still manual; personal photo not App Store–safe
 - **Next three tasks:**
-  1. User trusts developer profile and launches app
-  2. Enable keyboard (Full Access OFF) and smoke-test insertion
-  3. Expand catalog density
+  1. Human Notes smoke (combos, rotate, globe)
+  2. Optional abstract variant default for public builds
+  3. Optional App Group theme sync

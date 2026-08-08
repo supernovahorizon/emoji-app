@@ -21,10 +21,11 @@ final class PreferencesTests: XCTestCase {
     }
 
     func testThemeResolution() {
-        XCTAssertEqual(KeyboardTheme.resolve(id: nil).id, KeyboardTheme.katseye.id)
+        XCTAssertEqual(KeyboardTheme.resolve(id: nil).id, KeyboardTheme.katseyePastel.id)
         XCTAssertEqual(KeyboardTheme.resolve(id: "soft").id, "soft")
-        XCTAssertEqual(KeyboardTheme.resolve(id: "katseye").id, "katseye")
-        XCTAssertEqual(KeyboardTheme.resolve(id: "nope").id, KeyboardTheme.katseye.id)
+        XCTAssertEqual(KeyboardTheme.resolve(id: "katseye").id, KeyboardTheme.katseyePastel.id)
+        XCTAssertEqual(KeyboardTheme.resolve(id: "katseye.pastel").id, KeyboardTheme.katseyePastel.id)
+        XCTAssertEqual(KeyboardTheme.resolve(id: "nope").id, KeyboardTheme.katseyePastel.id)
     }
 
     func testInMemoryStoreRoundTrip() {

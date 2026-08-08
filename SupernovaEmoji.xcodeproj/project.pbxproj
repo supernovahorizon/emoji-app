@@ -12,6 +12,8 @@
 		08027E20306F363538F0AC37 /* KeyboardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */; };
 		0E2B21A7BB1EB4029B979C2A /* EmojiCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C22FA2A11D02118495344F /* EmojiCatalog.swift */; };
 		0EA97C6A9675EA960F644E5D /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
+		1045D6422281CE773ACB41CE /* katseye_combos.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E0DD90F783EFADF094E46EF /* katseye_combos.json */; };
+		1B9040FE77B14C9D21B0B5B4 /* katseye_combos.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E0DD90F783EFADF094E46EF /* katseye_combos.json */; };
 		1E649F88DFBCC96ECEA52151 /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C898B199ACD6EB550E68DA88 /* CatalogTests.swift */; };
 		220FA84785C487932FF92216 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
 		292D1E5B79E94A0233F424E2 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
@@ -40,18 +42,19 @@
 		96E69B9925BEBF25B88C2C06 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569930554787B7F2F815A868 /* KeyboardLayout.swift */; };
 		98924510C8370A88F693F0FB /* EmojiCatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */; };
 		9926D2D6A3EDA7927D43B9C1 /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
-		9BD4A2E30D10CA39564F7AC9 /* KatseyeBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C10F36A534CA32981F3BD /* KatseyeBackground.jpg */; };
 		9DC79D72FEA86C47D32514EB /* SmokeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D516F6D5CE2079FCF9F782 /* SmokeUITests.swift */; };
 		9E8A89514C27770485AB574A /* EnglishKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA4C5B4AB2E490865EC7A6 /* EnglishKeyboardView.swift */; };
 		9F30AA62574BB7928A5E1881 /* SupernovaEmojiKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 95F1A576FFB294381693B97A /* SupernovaEmojiKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A119DB47C9EB609796589838 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */; };
 		A174C8DA8864F65EC6000B38 /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
 		A3C0D196AF4795E7B2393425 /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
+		AA79E54C95BF11D8F0122B20 /* katseye_combos.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E0DD90F783EFADF094E46EF /* katseye_combos.json */; };
 		AB35F82BAF25B2C670ED179A /* emoji_catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 23E6670401F165AB986EFE9B /* emoji_catalog.json */; };
 		B3AE1110362E9E576F103261 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B57458922B015A795BF83D /* CoverImageView.swift */; };
 		B61D38AC89104D58E501CBC4 /* EditLooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5799F84C3AF2A4A8C6DC0C3B /* EditLooksView.swift */; };
 		C00E10EC79FAB7D8CBE7DC92 /* ProfilePhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C086651E00E286F5B1E46 /* ProfilePhotoStore.swift */; };
 		C3537879D955E0CBCFB25802 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
+		C3B657C7A08578D44542F97A /* KatseyeCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE74D79D782780049D17E6E3 /* KatseyeCatalogTests.swift */; };
 		C6E0E200DE1E47C97BBCDA5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D0D51E2029782AA01CF34C /* Assets.xcassets */; };
 		C93677A778F7F28A21CDA7F3 /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
 		CB9A19ED29153F5FDBB9D312 /* KeyboardMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823FB82223007BC9875E771 /* KeyboardMetrics.swift */; };
@@ -59,12 +62,10 @@
 		D1F718675E2C4946FD03019C /* EmojiCatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */; };
 		D4AF060D752ACAB6765823A1 /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
 		D65060F6ED3AA9C98BF76B2B /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
-		D7A4DC4B5E00B54D1C756A34 /* KatseyeWordmark.png in Resources */ = {isa = PBXBuildFile; fileRef = A441DC3E4E68DE4CF6442985 /* KatseyeWordmark.png */; };
 		DF725742BABFB122B7D361F1 /* KeyboardMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823FB82223007BC9875E771 /* KeyboardMetrics.swift */; };
 		E57DF90E8C5FA5C8ECB1FF2C /* KeyboardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */; };
 		E768ABBBB073F5F9918F76C2 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */; };
 		EB1AADACD28C7F4B9CD03C70 /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
-		F0E39CBB277703154F15C0EF /* KatseyeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1414755B7B0BDDCC9668A4E8 /* KatseyeLogo.png */; };
 		F152EC5F9AFBFA54EF31767B /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF573A214B58ACABB6707A8D /* EmojiCategory.swift */; };
 		F3B87F4474BBA8CA23C92E5F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34875861707708CED8CB97 /* KeyboardViewController.swift */; };
 		F4C6CE121C44323FF935220D /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
@@ -125,7 +126,6 @@
 		03D613DF956FCB37EB0405DF /* KeyboardMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardMetricsTests.swift; sourceTree = "<group>"; };
 		0AAFF95E62B445DF00C2F7F7 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		0B4639876729552B94E9333B /* SupernovaEmojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupernovaEmojiApp.swift; sourceTree = "<group>"; };
-		1414755B7B0BDDCC9668A4E8 /* KatseyeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KatseyeLogo.png; sourceTree = "<group>"; };
 		23E6670401F165AB986EFE9B /* emoji_catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emoji_catalog.json; sourceTree = "<group>"; };
 		25D0D51E2029782AA01CF34C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		272C086651E00E286F5B1E46 /* ProfilePhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoStore.swift; sourceTree = "<group>"; };
@@ -145,15 +145,14 @@
 		72A2978D21C921580BAE8F58 /* SupernovaEmojiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupernovaEmojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B718B63B07D9F08E3C6D7A /* EnableKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableKeyboardView.swift; sourceTree = "<group>"; };
 		8489C4197879C54F4E03DA16 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
-		8A7C10F36A534CA32981F3BD /* KatseyeBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = KatseyeBackground.jpg; sourceTree = "<group>"; };
 		8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
 		905A7E165ED9B409F91F8AB5 /* SupernovaEmojiKeyboardTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupernovaEmojiKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E6CD70EC35D74D4B713CC5 /* TextInputHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputHandlerTests.swift; sourceTree = "<group>"; };
 		95F1A576FFB294381693B97A /* SupernovaEmojiKeyboard.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SupernovaEmojiKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF8822DAE99029A9720EDD6 /* EmojiExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiExplorerView.swift; sourceTree = "<group>"; };
 		9DD29EA09ADE75EF9DCF2DE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9E0DD90F783EFADF094E46EF /* katseye_combos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = katseye_combos.json; sourceTree = "<group>"; };
 		A21AD601414A8C0460C0CB24 /* SupernovaEmojiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupernovaEmojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A441DC3E4E68DE4CF6442985 /* KatseyeWordmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KatseyeWordmark.png; sourceTree = "<group>"; };
 		AC345ACF1C47D6D26B0E516D /* SupernovaEmoji.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SupernovaEmoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D516F6D5CE2079FCF9F782 /* SmokeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeUITests.swift; sourceTree = "<group>"; };
 		B9FA4C5B4AB2E490865EC7A6 /* EnglishKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishKeyboardView.swift; sourceTree = "<group>"; };
@@ -166,6 +165,7 @@
 		DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputHandling.swift; sourceTree = "<group>"; };
 		ED317502A13DE0E084BB68F0 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		ED9576046F13372728A5D2CD /* KeyboardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTheme.swift; sourceTree = "<group>"; };
+		EE74D79D782780049D17E6E3 /* KatseyeCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatseyeCatalogTests.swift; sourceTree = "<group>"; };
 		EF573A214B58ACABB6707A8D /* EmojiCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCategory.swift; sourceTree = "<group>"; };
 		F63C10A502C9FD3BCD971456 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				23E6670401F165AB986EFE9B /* emoji_catalog.json */,
+				9E0DD90F783EFADF094E46EF /* katseye_combos.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -236,16 +237,6 @@
 				0B4639876729552B94E9333B /* SupernovaEmojiApp.swift */,
 			);
 			path = SupernovaEmoji;
-			sourceTree = "<group>";
-		};
-		3D974C2B7B10A6AE600D89D5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8A7C10F36A534CA32981F3BD /* KatseyeBackground.jpg */,
-				1414755B7B0BDDCC9668A4E8 /* KatseyeLogo.png */,
-				A441DC3E4E68DE4CF6442985 /* KatseyeWordmark.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		40A83AA3FEB72B12C292BC44 /* Config */ = {
@@ -280,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				C898B199ACD6EB550E68DA88 /* CatalogTests.swift */,
+				EE74D79D782780049D17E6E3 /* KatseyeCatalogTests.swift */,
 				03D613DF956FCB37EB0405DF /* KeyboardMetricsTests.swift */,
 				661685AF7CEA7E553D30774C /* KeyboardViewModelTests.swift */,
 				C53ABEC036AC5B39846FA8BE /* PreferencesTests.swift */,
@@ -290,7 +282,6 @@
 		BD3C26644E1750D9461A9097 /* SupernovaEmojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				3D974C2B7B10A6AE600D89D5 /* Resources */,
 				25D0D51E2029782AA01CF34C /* Assets.xcassets */,
 				B9FA4C5B4AB2E490865EC7A6 /* EnglishKeyboardView.swift */,
 				9DD29EA09ADE75EF9DCF2DE2 /* Info.plist */,
@@ -512,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D2045013ED33F9A6D3ABB2 /* emoji_catalog.json in Resources */,
+				1B9040FE77B14C9D21B0B5B4 /* katseye_combos.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +513,7 @@
 			files = (
 				8EE8B5D06B6FDE58622091AD /* Assets.xcassets in Resources */,
 				076D801B1A677DD1BD176618 /* emoji_catalog.json in Resources */,
+				1045D6422281CE773ACB41CE /* katseye_combos.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,10 +522,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6E0E200DE1E47C97BBCDA5A /* Assets.xcassets in Resources */,
-				9BD4A2E30D10CA39564F7AC9 /* KatseyeBackground.jpg in Resources */,
-				F0E39CBB277703154F15C0EF /* KatseyeLogo.png in Resources */,
-				D7A4DC4B5E00B54D1C756A34 /* KatseyeWordmark.png in Resources */,
 				AB35F82BAF25B2C670ED179A /* emoji_catalog.json in Resources */,
+				AA79E54C95BF11D8F0122B20 /* katseye_combos.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E649F88DFBCC96ECEA52151 /* CatalogTests.swift in Sources */,
+				C3B657C7A08578D44542F97A /* KatseyeCatalogTests.swift in Sources */,
 				7D8A00731AE7EE638A62009A /* KeyboardMetricsTests.swift in Sources */,
 				3F9E9FD6AF90EE09C119C495 /* KeyboardViewModelTests.swift in Sources */,
 				F8395DDBF12C4ECA27D43F4B /* PreferencesTests.swift in Sources */,

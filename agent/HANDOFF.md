@@ -2,57 +2,31 @@
 
 ## Completed
 
-Initial MVP bootstrap for Supernova Emoji:
+KATSEYE pastel theme from `KATSEYE-KEYBOARD-ASSET-KIT-V2.zip`:
 
-- Repository controls (AGENTS, docs, scripts, Makefile, CI)
-- XcodeGen project: app, keyboard extension, unit/UI test targets
-- EmojiCore: catalog, models, validator, preferences stores
-- Keyboard: SwiftUI UI hosted in UIInputViewController; insert/delete/globe
-- Companion app: onboarding, privacy, enablement, explorer, themes, help, diagnostics
-- Privacy checks, simulator build/tests, device deploy attempt
+- Assets imported (photo bg, abstract bg, charms 256, key skins, GemEye icon)
+- Theme id `katseye.pastel` default; `KatseyeBackgroundVariant` for personal vs abstract
+- Keyboard frosted pastel keys + photo wallpaper + gem-eye emoji toggle
+- Catalog category `katseye` with insertable combos
+- Companion Themes card + provenance/report docs
 
-## Architecture
-
-- `EmojiCore` — shared pure Swift domain (compiled into app + keyboard)
-- `SupernovaEmoji` — SwiftUI companion app
-- `SupernovaEmojiKeyboard` — custom keyboard extension (`RequestsOpenAccess=false`)
-- Preferences: `InMemoryPreferencesStore`, `LocalPreferencesStore`, `FallbackPreferencesStore`
-- Catalog: `Resources/emoji_catalog.json` (schemaVersioned)
-
-## Validation commands
+## Validation
 
 ```bash
 make bootstrap
-make validate
+make test
 make privacy-check
-make device-list
 make device-build
 ```
 
-## Physical device
+## Background
 
-- Target class: iPhone 13 Pro / iOS 26.x family when connected
-- Device build: success
-- Device install: success
-- Device launch: blocked — trust developer profile (Settings → General → VPN & Device Management)
-- Keyboard still requires manual iOS Settings enablement (Full Access OFF)
-
-## Known issues
-
-- Free personal team requires Trust Developer App before first launch
-- Without App Groups, favorites/recents in keyboard and app are separate containers
-- UITests are smoke-level only
+Personal soft photo is active via `KatseyeBackgroundVariant.current = .personalPhoto`.
 
 ## Exact next task
 
-1. User trusts developer certificate and confirms welcome UI.
-2. Enable keyboard with Full Access OFF; smoke-test insert/backspace/globe.
-3. Expand emoji catalog density while keeping validator tests green.
+User-assisted device smoke of KATSEYE category inserts; consider abstract default before any public release.
 
 ## Branch
 
 `feat/keyboard-mvp`
-
-## Latest commit
-
-Run: `git log -1 --oneline`
