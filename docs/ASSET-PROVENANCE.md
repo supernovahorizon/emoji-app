@@ -49,3 +49,16 @@ This project does **not** claim ownership of third-party KATSEYE photography, tr
 ## Removed / superseded
 
 - Earlier AI-generated dark stage wallpaper and hand-made pink logo badge used before the kit was available have been replaced by kit assets for the KATSEYE pastel theme.
+
+## App icon (updated)
+
+**Official KATSEYE symbol** from the official shop CDN:
+
+`https://shop.katseye.world/cdn/shop/files/04_KATSEYE_Symbol_Black.png`
+
+| Path | Notes |
+|------|--------|
+| `docs/assets/official-katseye-symbol-source.png` | Downloaded source |
+| `SupernovaEmoji/Assets.xcassets/AppIcon.appiconset/AppIcon.png` | 1024×1024 RGB, white bg, safe margin |
+
+Apple requires 1024×1024 app icons without transparency. Trademark: HYBE/Geffen — personal/local use only.
