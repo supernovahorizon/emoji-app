@@ -13,7 +13,7 @@ public struct KeyboardPreferences: Hashable, Codable, Sendable {
         favoriteIds: [String] = [],
         recentIds: [String] = [],
         selectedCategoryId: String? = nil,
-        themeId: String = KeyboardTheme.katseye.id
+        themeId: String = KeyboardTheme.katseyePastel.id
     ) {
         self.favoriteIds = favoriteIds
         self.recentIds = recentIds

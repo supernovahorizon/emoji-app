@@ -28,9 +28,10 @@ public final class KeyboardViewModel: ObservableObject {
         self.panel = initialPanel
         self.shiftState = .off
         var prefs = store.load()
-        // Migrate older default ("system") to KATSEYE.
-        if prefs.themeId == "system" {
-            prefs.themeId = KeyboardTheme.katseye.id
+        // Migrate older theme ids to KATSEYE pastel.
+        let legacy = ["system", "katseye", "pastelGem"]
+        if legacy.contains(prefs.themeId) {
+            prefs.themeId = KeyboardTheme.katseyePastel.id
             store.save(prefs)
         }
         self.preferences = prefs
@@ -43,6 +44,12 @@ public final class KeyboardViewModel: ObservableObject {
             list.insert(
                 EmojiCategory(id: "favorites", title: "Favorites", symbol: "★", sortOrder: -1),
                 at: 0
+            )
+        }
+        if !list.contains(where: { $0.id == "katseye" }) {
+            list.insert(
+                EmojiCategory(id: "katseye", title: "KATSEYE", symbol: "💎", sortOrder: 1),
+                at: 1
             )
         }
         return list.sorted { $0.sortOrder < $1.sortOrder }

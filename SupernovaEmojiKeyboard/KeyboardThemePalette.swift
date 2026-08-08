@@ -5,14 +5,24 @@ struct KeyboardThemePalette {
     let theme: KeyboardTheme
     let colorScheme: ColorScheme
 
-    var isKatseye: Bool { theme.id == "katseye" }
+    var isKatseye: Bool { theme.isKatseyeFamily }
 
-    // MARK: - Surfaces
+    // Pastel gem tokens from asset kit palette.json
+    static let pearl = Color(hex: 0xF8F4F7)
+    static let blush = Color(hex: 0xEFC5C8)
+    static let pink = Color(hex: 0xEFA8B6)
+    static let sky = Color(hex: 0x8CC9DF)
+    static let butter = Color(hex: 0xEEDB87)
+    static let lime = Color(hex: 0xB2A742)
+    static let lilac = Color(hex: 0xCBC3E9)
+    static let plum = Color(hex: 0x6D486A)
+    static let ink = Color(hex: 0x342C3B)
+    static let chrome = Color(hex: 0xE5E6EE)
 
     var boardBackground: Color {
         switch theme.id {
-        case "katseye":
-            return Color(red: 0.07, green: 0.05, blue: 0.10)
+        case KeyboardTheme.katseyePastel.id, "katseye", "pastelGem":
+            return Self.pearl
         case "soft":
             return colorScheme == .dark
                 ? Color(white: 0.18)
@@ -24,11 +34,11 @@ struct KeyboardThemePalette {
         }
     }
 
-    /// Letter keys — glass/transparent on Katseye so the wallpaper shows through.
     var letterKeyFill: Color {
+        if isKatseye {
+            return Color.white.opacity(0.55)
+        }
         switch theme.id {
-        case "katseye":
-            return Color.white.opacity(0.14)
         case "highContrast":
             return colorScheme == .dark ? Color(white: 0.15) : .white
         default:
@@ -37,19 +47,13 @@ struct KeyboardThemePalette {
     }
 
     var letterKeyStroke: Color {
-        switch theme.id {
-        case "katseye":
-            return Color.white.opacity(0.42)
-        default:
-            return .clear
-        }
+        if isKatseye { return Color.white.opacity(0.85) }
+        return .clear
     }
 
     var letterKeyText: Color {
+        if isKatseye { return Self.ink }
         switch theme.id {
-        case "katseye":
-            // Bright white letters for contrast over dark photo
-            return .white
         case "highContrast":
             return colorScheme == .dark ? .white : .black
         default:
@@ -58,19 +62,13 @@ struct KeyboardThemePalette {
     }
 
     var letterKeyTextShadow: Color {
-        switch theme.id {
-        case "katseye":
-            return Color.black.opacity(0.75)
-        default:
-            return .clear
-        }
+        if isKatseye { return Color.white.opacity(0.65) }
+        return .clear
     }
 
     var actionKeyFill: Color {
+        if isKatseye { return Self.lilac.opacity(0.72) }
         switch theme.id {
-        case "katseye":
-            // Slightly stronger glass so actions stay tappable/readable
-            return Color(red: 0.85, green: 0.2, blue: 0.55).opacity(0.42)
         case "highContrast":
             return colorScheme == .dark ? Color(white: 0.3) : Color(white: 0.75)
         default:
@@ -79,106 +77,86 @@ struct KeyboardThemePalette {
     }
 
     var actionKeyText: Color {
-        switch theme.id {
-        case "katseye":
-            return .white
-        default:
-            return .primary
-        }
+        if isKatseye { return Self.ink }
+        return .primary
     }
 
     var returnKeyFill: Color {
-        switch theme.id {
-        case "katseye":
-            return Color(red: 1.0, green: 0.28, blue: 0.62).opacity(0.88)
-        default:
-            return Color.accentColor.opacity(colorScheme == .dark ? 0.85 : 1)
-        }
+        if isKatseye { return Self.pink.opacity(0.92) }
+        return Color.accentColor.opacity(colorScheme == .dark ? 0.85 : 1)
     }
 
-    var returnKeyText: Color { .white }
+    var returnKeyText: Color {
+        if isKatseye { return Self.ink }
+        return .white
+    }
 
     var shiftActiveFill: Color {
-        switch theme.id {
-        case "katseye":
-            return Color(red: 1.0, green: 0.45, blue: 0.78).opacity(0.85)
-        default:
-            return colorScheme == .dark ? Color.white : Color.black.opacity(0.85)
-        }
+        if isKatseye { return Self.sky.opacity(0.9) }
+        return colorScheme == .dark ? Color.white : Color.black.opacity(0.85)
     }
 
     var shiftActiveText: Color {
-        switch theme.id {
-        case "katseye":
-            return Color(red: 0.15, green: 0.05, blue: 0.18)
-        default:
-            return colorScheme == .dark ? .black : .white
-        }
+        if isKatseye { return Self.ink }
+        return colorScheme == .dark ? .black : .white
     }
 
     var keyShadow: Color {
-        switch theme.id {
-        case "katseye":
-            return Color.black.opacity(0.25)
-        default:
-            return .black.opacity(colorScheme == .dark ? 0.35 : 0.12)
-        }
+        if isKatseye { return Self.plum.opacity(0.12) }
+        return .black.opacity(colorScheme == .dark ? 0.35 : 0.12)
     }
 
     var categorySelectedFill: Color {
-        switch theme.id {
-        case "katseye":
-            return Color(red: 1.0, green: 0.35, blue: 0.7).opacity(0.4)
-        default:
-            return Color.accentColor.opacity(0.25)
-        }
+        if isKatseye { return Self.sky.opacity(0.45) }
+        return Color.accentColor.opacity(0.25)
     }
 
     var categorySelectedStroke: Color {
-        switch theme.id {
-        case "katseye":
-            return Color(red: 1.0, green: 0.55, blue: 0.85)
-        default:
-            return Color.accentColor
-        }
+        if isKatseye { return Self.butter }
+        return Color.accentColor
     }
 
     var categoryIdleFill: Color {
-        switch theme.id {
-        case "katseye":
-            return Color.black.opacity(0.28)
-        default:
-            return Color.primary.opacity(0.06)
-        }
+        if isKatseye { return Color.white.opacity(0.55) }
+        return Color.primary.opacity(0.06)
     }
 
     var secondaryLabel: Color {
-        switch theme.id {
-        case "katseye":
-            return Color.white.opacity(0.85)
-        default:
-            return .secondary
-        }
+        if isKatseye { return Self.plum.opacity(0.9) }
+        return .secondary
     }
 
     var primaryLabel: Color {
-        switch theme.id {
-        case "katseye":
-            return .white
-        default:
-            return .primary
-        }
+        if isKatseye { return Self.ink }
+        return .primary
     }
 
     var boardGlow: LinearGradient {
         LinearGradient(
             colors: [
-                Color(red: 0.85, green: 0.15, blue: 0.55).opacity(0.25),
-                Color(red: 0.35, green: 0.08, blue: 0.55).opacity(0.15),
+                Self.pink.opacity(0.22),
+                Self.sky.opacity(0.18),
+                Self.butter.opacity(0.12),
                 Color.clear
             ],
             startPoint: .topLeading,
             endPoint: .bottomTrailing
+        )
+    }
+
+    var backgroundAssetName: String {
+        KatseyeBackgroundVariant.current.imageAssetName
+    }
+}
+
+private extension Color {
+    init(hex: UInt32, opacity: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xFF) / 255,
+            green: Double((hex >> 8) & 0xFF) / 255,
+            blue: Double(hex & 0xFF) / 255,
+            opacity: opacity
         )
     }
 }

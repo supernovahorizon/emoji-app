@@ -236,13 +236,14 @@ struct EnglishKeyboardView: View {
     private func emojiToggleKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.showPanel(.emoji)
+            viewModel.selectCategory("katseye")
         } label: {
             Group {
                 if palette.isKatseye {
-                    Image("KatseyeLogo")
+                    Image("katseyeCharmGemEye")
                         .resizable()
                         .scaledToFit()
-                        .padding(4)
+                        .padding(6)
                 } else {
                     Text("😊")
                         .font(.system(size: max(20, height * 0.45)))
@@ -257,7 +258,7 @@ struct EnglishKeyboardView: View {
             )
         }
         .buttonStyle(KeyboardKeyButtonStyle())
-        .accessibilityLabel("Emoji keyboard")
+        .accessibilityLabel("KATSEYE emoji keyboard")
     }
 
     private func returnKey(height: CGFloat, width: CGFloat) -> some View {
@@ -281,14 +282,49 @@ struct EnglishKeyboardView: View {
     // MARK: Appearance
 
     private var letterKeyBackground: some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(palette.letterKeyFill)
-            .shadow(color: palette.keyShadow, radius: palette.isKatseye ? 0 : 0.5, y: 1)
+        Group {
+            if palette.isKatseye {
+                // Frosted pearl key surface from palette (asset kit mood).
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.white.opacity(0.78),
+                                KeyboardThemePalette.pearl.opacity(0.62),
+                                KeyboardThemePalette.blush.opacity(0.35)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .shadow(color: palette.keyShadow, radius: 1, y: 1)
+            } else {
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(palette.letterKeyFill)
+                    .shadow(color: palette.keyShadow, radius: 0.5, y: 1)
+            }
+        }
     }
 
     private var actionKeyBackground: some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(palette.actionKeyFill)
+        Group {
+            if palette.isKatseye {
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                KeyboardThemePalette.lilac.opacity(0.85),
+                                KeyboardThemePalette.sky.opacity(0.55)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+            } else {
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(palette.actionKeyFill)
+            }
+        }
     }
 
     private var shiftSymbol: String {
