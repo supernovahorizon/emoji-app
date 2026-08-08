@@ -1,0 +1,928 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		009CCE70116AFEFB5DE6C991 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF573A214B58ACABB6707A8D /* EmojiCategory.swift */; };
+		076D801B1A677DD1BD176618 /* emoji_catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 23E6670401F165AB986EFE9B /* emoji_catalog.json */; };
+		08027E20306F363538F0AC37 /* KeyboardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */; };
+		0E2B21A7BB1EB4029B979C2A /* EmojiCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C22FA2A11D02118495344F /* EmojiCatalog.swift */; };
+		0EA97C6A9675EA960F644E5D /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
+		1E649F88DFBCC96ECEA52151 /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C898B199ACD6EB550E68DA88 /* CatalogTests.swift */; };
+		220FA84785C487932FF92216 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
+		292D1E5B79E94A0233F424E2 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
+		2E8F965CB716D9C26F03B3E3 /* KeyboardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */; };
+		30F889DC9F62446EC3456F21 /* KeyboardRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E40F6CC95402EA165FE2F9 /* KeyboardRootView.swift */; };
+		33783714E39E8EE3D333D4E1 /* KeyboardPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */; };
+		3A6A22E271DC878BBCF0345D /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAFF95E62B445DF00C2F7F7 /* RootTabView.swift */; };
+		3EB18F16D4089822B5BC3C30 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF573A214B58ACABB6707A8D /* EmojiCategory.swift */; };
+		3F9E9FD6AF90EE09C119C495 /* KeyboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661685AF7CEA7E553D30774C /* KeyboardViewModelTests.swift */; };
+		43CEED34A099E3E03BA96FC9 /* EmojiCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C22FA2A11D02118495344F /* EmojiCatalog.swift */; };
+		4D6FE555A7FE3A676ADD8222 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED317502A13DE0E084BB68F0 /* MoreView.swift */; };
+		6754DD13D6480C0E12F7D22A /* EmojiExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF8822DAE99029A9720EDD6 /* EmojiExplorerView.swift */; };
+		76D4FC228965653E19E63A55 /* PrivacyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BDC6D2EC58BA9AA8311361 /* PrivacyCardView.swift */; };
+		76E85674A8BDBA4107EA7956 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701ECF2EBC986CF881D90918 /* WelcomeView.swift */; };
+		7A09EA46EF2AB74588C52A56 /* ThemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C10A502C9FD3BCD971456 /* ThemesView.swift */; };
+		7B4C9710CBF11E5B8A3FF83F /* EnableKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B718B63B07D9F08E3C6D7A /* EnableKeyboardView.swift */; };
+		86257D6AB199F7AC3CF49736 /* EmojiCatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */; };
+		8B4A842CBE67B4D14E494A88 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */; };
+		8EE8B5D06B6FDE58622091AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C360BAD7A3E9725B29FBA8EA /* Assets.xcassets */; };
+		9145DA381CD8208B0F3136A0 /* KeyboardPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */; };
+		952D209A60EA0CB283AE3AF5 /* SupernovaEmojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4639876729552B94E9333B /* SupernovaEmojiApp.swift */; };
+		9586DD278968584FA24D3FFD /* KeyboardPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */; };
+		98924510C8370A88F693F0FB /* EmojiCatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */; };
+		9926D2D6A3EDA7927D43B9C1 /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
+		9DC79D72FEA86C47D32514EB /* SmokeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D516F6D5CE2079FCF9F782 /* SmokeUITests.swift */; };
+		9F30AA62574BB7928A5E1881 /* SupernovaEmojiKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 95F1A576FFB294381693B97A /* SupernovaEmojiKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A119DB47C9EB609796589838 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */; };
+		A174C8DA8864F65EC6000B38 /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
+		A3C0D196AF4795E7B2393425 /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
+		AB35F82BAF25B2C670ED179A /* emoji_catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 23E6670401F165AB986EFE9B /* emoji_catalog.json */; };
+		C3537879D955E0CBCFB25802 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
+		C93677A778F7F28A21CDA7F3 /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
+		D015C00DBBB839AF8DB14824 /* EmojiCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C22FA2A11D02118495344F /* EmojiCatalog.swift */; };
+		D1F718675E2C4946FD03019C /* EmojiCatalogLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */; };
+		D4AF060D752ACAB6765823A1 /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
+		D65060F6ED3AA9C98BF76B2B /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
+		E57DF90E8C5FA5C8ECB1FF2C /* KeyboardPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */; };
+		E768ABBBB073F5F9918F76C2 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */; };
+		EB1AADACD28C7F4B9CD03C70 /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
+		F152EC5F9AFBFA54EF31767B /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF573A214B58ACABB6707A8D /* EmojiCategory.swift */; };
+		F3B87F4474BBA8CA23C92E5F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34875861707708CED8CB97 /* KeyboardViewController.swift */; };
+		F4C6CE121C44323FF935220D /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
+		F4D2045013ED33F9A6D3ABB2 /* emoji_catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 23E6670401F165AB986EFE9B /* emoji_catalog.json */; };
+		F8395DDBF12C4ECA27D43F4B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53ABEC036AC5B39846FA8BE /* PreferencesTests.swift */; };
+		FC5B3A8E944A3D133E12C083 /* TextInputHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E6CD70EC35D74D4B713CC5 /* TextInputHandlerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		96223C2EEC5267BBA014FF76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BEBE8BDA09520FA96380CBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7D50FDF12D8C9C961890698;
+			remoteInfo = SupernovaEmojiKeyboard;
+		};
+		A652F9EA2E212AE49C565B2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BEBE8BDA09520FA96380CBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7D50FDF12D8C9C961890698;
+			remoteInfo = SupernovaEmojiKeyboard;
+		};
+		A6E89CFEDB3C87BF1A549B1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BEBE8BDA09520FA96380CBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 396763A9BE795FBA8159815D;
+			remoteInfo = SupernovaEmoji;
+		};
+		E4813E8BF8C10FD06E986B90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BEBE8BDA09520FA96380CBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 396763A9BE795FBA8159815D;
+			remoteInfo = SupernovaEmoji;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C7DAAD6E0E9C63C3EDB4F2FA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9F30AA62574BB7928A5E1881 /* SupernovaEmojiKeyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		02F7F927702A7561BB94C271 /* EmojiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiItem.swift; sourceTree = "<group>"; };
+		0AAFF95E62B445DF00C2F7F7 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		0B4639876729552B94E9333B /* SupernovaEmojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupernovaEmojiApp.swift; sourceTree = "<group>"; };
+		23E6670401F165AB986EFE9B /* emoji_catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emoji_catalog.json; sourceTree = "<group>"; };
+		351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPreferencesStore.swift; sourceTree = "<group>"; };
+		3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPreferences.swift; sourceTree = "<group>"; };
+		436FF49CD17E911D6FF8669B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		58E40F6CC95402EA165FE2F9 /* KeyboardRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRootView.swift; sourceTree = "<group>"; };
+		661685AF7CEA7E553D30774C /* KeyboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModelTests.swift; sourceTree = "<group>"; };
+		66C22FA2A11D02118495344F /* EmojiCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCatalog.swift; sourceTree = "<group>"; };
+		70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCatalogLoader.swift; sourceTree = "<group>"; };
+		701ECF2EBC986CF881D90918 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		71BDC6D2EC58BA9AA8311361 /* PrivacyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyCardView.swift; sourceTree = "<group>"; };
+		72A2978D21C921580BAE8F58 /* SupernovaEmojiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupernovaEmojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76B718B63B07D9F08E3C6D7A /* EnableKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableKeyboardView.swift; sourceTree = "<group>"; };
+		8489C4197879C54F4E03DA16 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		905A7E165ED9B409F91F8AB5 /* SupernovaEmojiKeyboardTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupernovaEmojiKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92E6CD70EC35D74D4B713CC5 /* TextInputHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputHandlerTests.swift; sourceTree = "<group>"; };
+		95F1A576FFB294381693B97A /* SupernovaEmojiKeyboard.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SupernovaEmojiKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF8822DAE99029A9720EDD6 /* EmojiExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiExplorerView.swift; sourceTree = "<group>"; };
+		9DD29EA09ADE75EF9DCF2DE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A21AD601414A8C0460C0CB24 /* SupernovaEmojiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupernovaEmojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC345ACF1C47D6D26B0E516D /* SupernovaEmoji.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SupernovaEmoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4D516F6D5CE2079FCF9F782 /* SmokeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeUITests.swift; sourceTree = "<group>"; };
+		C360BAD7A3E9725B29FBA8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCatalogValidator.swift; sourceTree = "<group>"; };
+		C53ABEC036AC5B39846FA8BE /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		C898B199ACD6EB550E68DA88 /* CatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTests.swift; sourceTree = "<group>"; };
+		CA34875861707708CED8CB97 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputHandling.swift; sourceTree = "<group>"; };
+		ED317502A13DE0E084BB68F0 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		ED9576046F13372728A5D2CD /* KeyboardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTheme.swift; sourceTree = "<group>"; };
+		EF573A214B58ACABB6707A8D /* EmojiCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCategory.swift; sourceTree = "<group>"; };
+		F63C10A502C9FD3BCD971456 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1209347B1C8750B7FFAA4A05 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				66C22FA2A11D02118495344F /* EmojiCatalog.swift */,
+				70137FC1D2FEE7C0D844C771 /* EmojiCatalogLoader.swift */,
+				C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
+		1392D9C6BF5911B91256A297 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				9CF8822DAE99029A9720EDD6 /* EmojiExplorerView.swift */,
+				76B718B63B07D9F08E3C6D7A /* EnableKeyboardView.swift */,
+				ED317502A13DE0E084BB68F0 /* MoreView.swift */,
+				71BDC6D2EC58BA9AA8311361 /* PrivacyCardView.swift */,
+				F63C10A502C9FD3BCD971456 /* ThemesView.swift */,
+				701ECF2EBC986CF881D90918 /* WelcomeView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		277C3A9F60310E14D1629A23 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23E6670401F165AB986EFE9B /* emoji_catalog.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		324E17852C2AE62C5A434768 /* EmojiCore */ = {
+			isa = PBXGroup;
+			children = (
+				1209347B1C8750B7FFAA4A05 /* Catalog */,
+				D9BBD72E68B2B2682383CD8F /* Input */,
+				FEBB41B9E117A89374AAB1B9 /* Keyboard */,
+				D4395619AA19FB2F483DAC8A /* Models */,
+				CED3256087FE0B6DC173C960 /* Preferences */,
+				277C3A9F60310E14D1629A23 /* Resources */,
+			);
+			path = EmojiCore;
+			sourceTree = "<group>";
+		};
+		38AF9CD290E444E5FF462FE8 /* SupernovaEmoji */ = {
+			isa = PBXGroup;
+			children = (
+				1392D9C6BF5911B91256A297 /* Features */,
+				C360BAD7A3E9725B29FBA8EA /* Assets.xcassets */,
+				436FF49CD17E911D6FF8669B /* Info.plist */,
+				0AAFF95E62B445DF00C2F7F7 /* RootTabView.swift */,
+				0B4639876729552B94E9333B /* SupernovaEmojiApp.swift */,
+			);
+			path = SupernovaEmoji;
+			sourceTree = "<group>";
+		};
+		40A83AA3FEB72B12C292BC44 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8489C4197879C54F4E03DA16 /* Shared.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		49165500FFE6188EA7A80F80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC345ACF1C47D6D26B0E516D /* SupernovaEmoji.app */,
+				95F1A576FFB294381693B97A /* SupernovaEmojiKeyboard.appex */,
+				905A7E165ED9B409F91F8AB5 /* SupernovaEmojiKeyboardTests.xctest */,
+				72A2978D21C921580BAE8F58 /* SupernovaEmojiTests.xctest */,
+				A21AD601414A8C0460C0CB24 /* SupernovaEmojiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FBBEF2B9F8D5A73B115CD2B /* SupernovaEmojiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B4D516F6D5CE2079FCF9F782 /* SmokeUITests.swift */,
+			);
+			path = SupernovaEmojiUITests;
+			sourceTree = "<group>";
+		};
+		ADA7883B3DD726F83A33C9F6 /* SupernovaEmojiTests */ = {
+			isa = PBXGroup;
+			children = (
+				C898B199ACD6EB550E68DA88 /* CatalogTests.swift */,
+				661685AF7CEA7E553D30774C /* KeyboardViewModelTests.swift */,
+				C53ABEC036AC5B39846FA8BE /* PreferencesTests.swift */,
+			);
+			path = SupernovaEmojiTests;
+			sourceTree = "<group>";
+		};
+		BD3C26644E1750D9461A9097 /* SupernovaEmojiKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9DD29EA09ADE75EF9DCF2DE2 /* Info.plist */,
+				58E40F6CC95402EA165FE2F9 /* KeyboardRootView.swift */,
+				CA34875861707708CED8CB97 /* KeyboardViewController.swift */,
+			);
+			path = SupernovaEmojiKeyboard;
+			sourceTree = "<group>";
+		};
+		CED3256087FE0B6DC173C960 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		D4395619AA19FB2F483DAC8A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF573A214B58ACABB6707A8D /* EmojiCategory.swift */,
+				02F7F927702A7561BB94C271 /* EmojiItem.swift */,
+				3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */,
+				ED9576046F13372728A5D2CD /* KeyboardTheme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D9BBD72E68B2B2682383CD8F /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		E00822C342F5769773E5BD2C = {
+			isa = PBXGroup;
+			children = (
+				40A83AA3FEB72B12C292BC44 /* Config */,
+				324E17852C2AE62C5A434768 /* EmojiCore */,
+				38AF9CD290E444E5FF462FE8 /* SupernovaEmoji */,
+				BD3C26644E1750D9461A9097 /* SupernovaEmojiKeyboard */,
+				E061D15BBA5143B83AADEC3F /* SupernovaEmojiKeyboardTests */,
+				ADA7883B3DD726F83A33C9F6 /* SupernovaEmojiTests */,
+				9FBBEF2B9F8D5A73B115CD2B /* SupernovaEmojiUITests */,
+				49165500FFE6188EA7A80F80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E061D15BBA5143B83AADEC3F /* SupernovaEmojiKeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				92E6CD70EC35D74D4B713CC5 /* TextInputHandlerTests.swift */,
+			);
+			path = SupernovaEmojiKeyboardTests;
+			sourceTree = "<group>";
+		};
+		FEBB41B9E117A89374AAB1B9 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8BA989A66BF1E30F94247C17 /* KeyboardViewModel.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		396763A9BE795FBA8159815D /* SupernovaEmoji */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0F73622BF5C3E460409AD0C /* Build configuration list for PBXNativeTarget "SupernovaEmoji" */;
+			buildPhases = (
+				273120E8FC414F5D1F715069 /* Sources */,
+				CA9917E41A6082D099518B55 /* Resources */,
+				C7DAAD6E0E9C63C3EDB4F2FA /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2D27934950A51B5155F53B9 /* PBXTargetDependency */,
+			);
+			name = SupernovaEmoji;
+			packageProductDependencies = (
+			);
+			productName = SupernovaEmoji;
+			productReference = AC345ACF1C47D6D26B0E516D /* SupernovaEmoji.app */;
+			productType = "com.apple.product-type.application";
+		};
+		44391CD25A7B64EE11A10B5A /* SupernovaEmojiKeyboardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6488366942E3C22F0ED43FD4 /* Build configuration list for PBXNativeTarget "SupernovaEmojiKeyboardTests" */;
+			buildPhases = (
+				027B471BCD9D8872BA16CECC /* Sources */,
+				05076A060EDCA247C4C80F35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42CAC583CC3E73BA60F13630 /* PBXTargetDependency */,
+			);
+			name = SupernovaEmojiKeyboardTests;
+			packageProductDependencies = (
+			);
+			productName = SupernovaEmojiKeyboardTests;
+			productReference = 905A7E165ED9B409F91F8AB5 /* SupernovaEmojiKeyboardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		86197A81FA075E02C3C33DD6 /* SupernovaEmojiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68EF0183CF8F30D0332975A5 /* Build configuration list for PBXNativeTarget "SupernovaEmojiUITests" */;
+			buildPhases = (
+				A203F83C3E108B03F4929A42 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2165593A1E3EFD9EBB4B5A68 /* PBXTargetDependency */,
+			);
+			name = SupernovaEmojiUITests;
+			packageProductDependencies = (
+			);
+			productName = SupernovaEmojiUITests;
+			productReference = A21AD601414A8C0460C0CB24 /* SupernovaEmojiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F7D50FDF12D8C9C961890698 /* SupernovaEmojiKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06A4D9101C6E9A49AC4A1665 /* Build configuration list for PBXNativeTarget "SupernovaEmojiKeyboard" */;
+			buildPhases = (
+				48D01B2C851C613FFAE1810F /* Sources */,
+				F675D9C63C208B8C68B1CEF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SupernovaEmojiKeyboard;
+			packageProductDependencies = (
+			);
+			productName = SupernovaEmojiKeyboard;
+			productReference = 95F1A576FFB294381693B97A /* SupernovaEmojiKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		FB92693D4EC780B4D1D0B176 /* SupernovaEmojiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79553A7FC171E347B20E8477 /* Build configuration list for PBXNativeTarget "SupernovaEmojiTests" */;
+			buildPhases = (
+				7DCFE94406A4ECCD6038E1B5 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50FD9C95452C9DFA7FFB0EB6 /* PBXTargetDependency */,
+			);
+			name = SupernovaEmojiTests;
+			packageProductDependencies = (
+			);
+			productName = SupernovaEmojiTests;
+			productReference = 72A2978D21C921580BAE8F58 /* SupernovaEmojiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3BEBE8BDA09520FA96380CBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					396763A9BE795FBA8159815D = {
+						ProvisioningStyle = Automatic;
+					};
+					44391CD25A7B64EE11A10B5A = {
+						ProvisioningStyle = Automatic;
+					};
+					86197A81FA075E02C3C33DD6 = {
+						ProvisioningStyle = Automatic;
+						TestTargetID = 396763A9BE795FBA8159815D;
+					};
+					F7D50FDF12D8C9C961890698 = {
+						ProvisioningStyle = Automatic;
+					};
+					FB92693D4EC780B4D1D0B176 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 23BC6E356A763A6798B3F0E1 /* Build configuration list for PBXProject "SupernovaEmoji" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E00822C342F5769773E5BD2C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 49165500FFE6188EA7A80F80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				396763A9BE795FBA8159815D /* SupernovaEmoji */,
+				F7D50FDF12D8C9C961890698 /* SupernovaEmojiKeyboard */,
+				FB92693D4EC780B4D1D0B176 /* SupernovaEmojiTests */,
+				44391CD25A7B64EE11A10B5A /* SupernovaEmojiKeyboardTests */,
+				86197A81FA075E02C3C33DD6 /* SupernovaEmojiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05076A060EDCA247C4C80F35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4D2045013ED33F9A6D3ABB2 /* emoji_catalog.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA9917E41A6082D099518B55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EE8B5D06B6FDE58622091AD /* Assets.xcassets in Resources */,
+				076D801B1A677DD1BD176618 /* emoji_catalog.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F675D9C63C208B8C68B1CEF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB35F82BAF25B2C670ED179A /* emoji_catalog.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		027B471BCD9D8872BA16CECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D015C00DBBB839AF8DB14824 /* EmojiCatalog.swift in Sources */,
+				86257D6AB199F7AC3CF49736 /* EmojiCatalogLoader.swift in Sources */,
+				292D1E5B79E94A0233F424E2 /* EmojiCatalogValidator.swift in Sources */,
+				3EB18F16D4089822B5BC3C30 /* EmojiCategory.swift in Sources */,
+				C93677A778F7F28A21CDA7F3 /* EmojiItem.swift in Sources */,
+				E57DF90E8C5FA5C8ECB1FF2C /* KeyboardPreferences.swift in Sources */,
+				33783714E39E8EE3D333D4E1 /* KeyboardPreferencesStore.swift in Sources */,
+				0EA97C6A9675EA960F644E5D /* KeyboardTheme.swift in Sources */,
+				E768ABBBB073F5F9918F76C2 /* KeyboardViewModel.swift in Sources */,
+				FC5B3A8E944A3D133E12C083 /* TextInputHandlerTests.swift in Sources */,
+				D65060F6ED3AA9C98BF76B2B /* TextInputHandling.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		273120E8FC414F5D1F715069 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E2B21A7BB1EB4029B979C2A /* EmojiCatalog.swift in Sources */,
+				D1F718675E2C4946FD03019C /* EmojiCatalogLoader.swift in Sources */,
+				C3537879D955E0CBCFB25802 /* EmojiCatalogValidator.swift in Sources */,
+				F152EC5F9AFBFA54EF31767B /* EmojiCategory.swift in Sources */,
+				6754DD13D6480C0E12F7D22A /* EmojiExplorerView.swift in Sources */,
+				EB1AADACD28C7F4B9CD03C70 /* EmojiItem.swift in Sources */,
+				7B4C9710CBF11E5B8A3FF83F /* EnableKeyboardView.swift in Sources */,
+				08027E20306F363538F0AC37 /* KeyboardPreferences.swift in Sources */,
+				9586DD278968584FA24D3FFD /* KeyboardPreferencesStore.swift in Sources */,
+				9926D2D6A3EDA7927D43B9C1 /* KeyboardTheme.swift in Sources */,
+				A119DB47C9EB609796589838 /* KeyboardViewModel.swift in Sources */,
+				4D6FE555A7FE3A676ADD8222 /* MoreView.swift in Sources */,
+				76D4FC228965653E19E63A55 /* PrivacyCardView.swift in Sources */,
+				3A6A22E271DC878BBCF0345D /* RootTabView.swift in Sources */,
+				952D209A60EA0CB283AE3AF5 /* SupernovaEmojiApp.swift in Sources */,
+				D4AF060D752ACAB6765823A1 /* TextInputHandling.swift in Sources */,
+				7A09EA46EF2AB74588C52A56 /* ThemesView.swift in Sources */,
+				76E85674A8BDBA4107EA7956 /* WelcomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48D01B2C851C613FFAE1810F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43CEED34A099E3E03BA96FC9 /* EmojiCatalog.swift in Sources */,
+				98924510C8370A88F693F0FB /* EmojiCatalogLoader.swift in Sources */,
+				220FA84785C487932FF92216 /* EmojiCatalogValidator.swift in Sources */,
+				009CCE70116AFEFB5DE6C991 /* EmojiCategory.swift in Sources */,
+				F4C6CE121C44323FF935220D /* EmojiItem.swift in Sources */,
+				2E8F965CB716D9C26F03B3E3 /* KeyboardPreferences.swift in Sources */,
+				9145DA381CD8208B0F3136A0 /* KeyboardPreferencesStore.swift in Sources */,
+				30F889DC9F62446EC3456F21 /* KeyboardRootView.swift in Sources */,
+				A3C0D196AF4795E7B2393425 /* KeyboardTheme.swift in Sources */,
+				F3B87F4474BBA8CA23C92E5F /* KeyboardViewController.swift in Sources */,
+				8B4A842CBE67B4D14E494A88 /* KeyboardViewModel.swift in Sources */,
+				A174C8DA8864F65EC6000B38 /* TextInputHandling.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DCFE94406A4ECCD6038E1B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E649F88DFBCC96ECEA52151 /* CatalogTests.swift in Sources */,
+				3F9E9FD6AF90EE09C119C495 /* KeyboardViewModelTests.swift in Sources */,
+				F8395DDBF12C4ECA27D43F4B /* PreferencesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A203F83C3E108B03F4929A42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DC79D72FEA86C47D32514EB /* SmokeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2165593A1E3EFD9EBB4B5A68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 396763A9BE795FBA8159815D /* SupernovaEmoji */;
+			targetProxy = A6E89CFEDB3C87BF1A549B1B /* PBXContainerItemProxy */;
+		};
+		42CAC583CC3E73BA60F13630 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7D50FDF12D8C9C961890698 /* SupernovaEmojiKeyboard */;
+			targetProxy = A652F9EA2E212AE49C565B2D /* PBXContainerItemProxy */;
+		};
+		50FD9C95452C9DFA7FFB0EB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 396763A9BE795FBA8159815D /* SupernovaEmoji */;
+			targetProxy = E4813E8BF8C10FD06E986B90 /* PBXContainerItemProxy */;
+		};
+		C2D27934950A51B5155F53B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7D50FDF12D8C9C961890698 /* SupernovaEmojiKeyboard */;
+			targetProxy = 96223C2EEC5267BBA014FF76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0363336E5F56FBABBFB49418 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8489C4197879C54F4E03DA16 /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2CAE708559C3F14F74E96A7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.keyboard.tests;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3532AC70EA43AED6BC057252 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8489C4197879C54F4E03DA16 /* Shared.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3BFCA159C2C31EBB1CE4C514 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SupernovaEmojiKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.keyboard;
+				PRODUCT_NAME = SupernovaEmojiKeyboard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		535293A65FF46F30C44B5294 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.tests;
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SupernovaEmoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SupernovaEmoji";
+			};
+			name = Release;
+		};
+		691B19E2234853EEE841B5B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.tests;
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SupernovaEmoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SupernovaEmoji";
+			};
+			name = Debug;
+		};
+		6AF430BD5CA06CF593B1393C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SupernovaEmoji/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji;
+				PRODUCT_NAME = SupernovaEmoji;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		948C9280729AB14D762DB071 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SupernovaEmoji/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji;
+				PRODUCT_NAME = SupernovaEmoji;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A90BB29E94CC32E5AAE93D8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SupernovaEmojiKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.keyboard;
+				PRODUCT_NAME = SupernovaEmojiKeyboard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B4AC988251BB7C01A02CC83C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.keyboard.tests;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		E246D84702B2B5CB77D111D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.uitests;
+				SDKROOT = iphoneos;
+				TEST_TARGET_NAME = SupernovaEmoji;
+			};
+			name = Debug;
+		};
+		E9BED0FE5CD29FBF0565E94D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.supernovahorizon.emoji.uitests;
+				SDKROOT = iphoneos;
+				TEST_TARGET_NAME = SupernovaEmoji;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06A4D9101C6E9A49AC4A1665 /* Build configuration list for PBXNativeTarget "SupernovaEmojiKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90BB29E94CC32E5AAE93D8A /* Debug */,
+				3BFCA159C2C31EBB1CE4C514 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		23BC6E356A763A6798B3F0E1 /* Build configuration list for PBXProject "SupernovaEmoji" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0363336E5F56FBABBFB49418 /* Debug */,
+				3532AC70EA43AED6BC057252 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6488366942E3C22F0ED43FD4 /* Build configuration list for PBXNativeTarget "SupernovaEmojiKeyboardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CAE708559C3F14F74E96A7B /* Debug */,
+				B4AC988251BB7C01A02CC83C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		68EF0183CF8F30D0332975A5 /* Build configuration list for PBXNativeTarget "SupernovaEmojiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E246D84702B2B5CB77D111D0 /* Debug */,
+				E9BED0FE5CD29FBF0565E94D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		79553A7FC171E347B20E8477 /* Build configuration list for PBXNativeTarget "SupernovaEmojiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				691B19E2234853EEE841B5B5 /* Debug */,
+				535293A65FF46F30C44B5294 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C0F73622BF5C3E460409AD0C /* Build configuration list for PBXNativeTarget "SupernovaEmoji" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF430BD5CA06CF593B1393C /* Debug */,
+				948C9280729AB14D762DB071 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3BEBE8BDA09520FA96380CBA /* Project object */;
+}

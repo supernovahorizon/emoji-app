@@ -1,0 +1,139 @@
+name: SupernovaEmoji
+options:
+  bundleIdPrefix: com.supernovahorizon
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  defaultConfig: Debug
+
+configs:
+  Debug: debug
+  Release: release
+
+configFiles:
+  Debug: Config/Shared.xcconfig
+  Release: Config/Shared.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "1.0"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+
+targets:
+  SupernovaEmoji:
+    type: application
+    platform: iOS
+    sources:
+      - path: SupernovaEmoji
+      - path: EmojiCore
+        excludes:
+          - "**/*Tests*"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.supernovahorizon.emoji
+        PRODUCT_NAME: SupernovaEmoji
+        INFOPLIST_FILE: SupernovaEmoji/Info.plist
+        GENERATE_INFOPLIST_FILE: false
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+    dependencies:
+      - target: SupernovaEmojiKeyboard
+        embed: true
+    scheme:
+      testTargets:
+        - SupernovaEmojiTests
+        - SupernovaEmojiKeyboardTests
+        - SupernovaEmojiUITests
+      gatherCoverageData: false
+
+  SupernovaEmojiKeyboard:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: SupernovaEmojiKeyboard
+      - path: EmojiCore
+        excludes:
+          - "**/*Tests*"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.supernovahorizon.emoji.keyboard
+        PRODUCT_NAME: SupernovaEmojiKeyboard
+        INFOPLIST_FILE: SupernovaEmojiKeyboard/Info.plist
+        GENERATE_INFOPLIST_FILE: false
+        TARGETED_DEVICE_FAMILY: "1,2"
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"
+        SKIP_INSTALL: YES
+
+  SupernovaEmojiTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: SupernovaEmojiTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.supernovahorizon.emoji.tests
+        GENERATE_INFOPLIST_FILE: true
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/SupernovaEmoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SupernovaEmoji"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+    dependencies:
+      - target: SupernovaEmoji
+
+  SupernovaEmojiKeyboardTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: SupernovaEmojiKeyboardTests
+      - path: EmojiCore
+        excludes:
+          - "**/*Tests*"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.supernovahorizon.emoji.keyboard.tests
+        GENERATE_INFOPLIST_FILE: true
+    dependencies:
+      - target: SupernovaEmojiKeyboard
+
+  SupernovaEmojiUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: SupernovaEmojiUITests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.supernovahorizon.emoji.uitests
+        GENERATE_INFOPLIST_FILE: true
+        TEST_TARGET_NAME: SupernovaEmoji
+    dependencies:
+      - target: SupernovaEmoji
+
+schemes:
+  SupernovaEmoji:
+    build:
+      targets:
+        SupernovaEmoji: all
+        SupernovaEmojiKeyboard: all
+        SupernovaEmojiTests: [test]
+        SupernovaEmojiKeyboardTests: [test]
+        SupernovaEmojiUITests: [test]
+    test:
+      targets:
+        - SupernovaEmojiTests
+        - SupernovaEmojiKeyboardTests
+      # UITests optional in CI; run locally when needed
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
