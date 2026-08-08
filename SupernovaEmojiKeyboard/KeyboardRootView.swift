@@ -13,11 +13,10 @@ struct KeyboardRootView: View {
 
     var body: some View {
         ZStack {
+            // Base + photo wallpaper (Katseye)
             palette.boardBackground
-            if viewModel.preferences.theme.id == "katseye" {
-                palette.boardGlow
-                    .opacity(0.85)
-                    .allowsHitTesting(false)
+            if palette.isKatseye {
+                katseyeWallpaper
             }
 
             Group {
@@ -36,18 +35,52 @@ struct KeyboardRootView: View {
         .accessibilityElement(children: .contain)
     }
 
+    private var katseyeWallpaper: some View {
+        ZStack {
+            if let _ = UIImage(named: "KatseyeBackground") {
+                Image("KatseyeBackground")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
+            }
+            // Slight dark veil so white lettering always pops
+            LinearGradient(
+                colors: [
+                    Color.black.opacity(0.25),
+                    Color.black.opacity(0.15),
+                    Color.black.opacity(0.35)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            palette.boardGlow
+                .opacity(0.55)
+        }
+        .allowsHitTesting(false)
+    }
+
     // MARK: Emoji mode
 
     private var emojiChrome: some View {
         VStack(spacing: 6) {
-            if viewModel.preferences.theme.id == "katseye" {
-                Text("EYEKON 👁️")
-                    .font(.system(size: 11, weight: .bold, design: .rounded))
-                    .tracking(2)
-                    .foregroundStyle(palette.secondaryLabel)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 6)
-                    .accessibilityHidden(true)
+            if palette.isKatseye {
+                HStack(spacing: 8) {
+                    if UIImage(named: "KatseyeLogo") != nil {
+                        Image("KatseyeLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 22, height: 22)
+                    }
+                    Text("KATSEYE")
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
+                        .tracking(2)
+                        .foregroundStyle(palette.secondaryLabel)
+                        .shadow(color: .black.opacity(0.6), radius: 1, y: 1)
+                    Spacer()
+                }
+                .padding(.horizontal, 6)
+                .accessibilityHidden(true)
             }
             categoryBar
             emojiGrid
@@ -76,6 +109,7 @@ struct KeyboardRootView: View {
                             Text(category.title)
                                 .font(.system(.caption, design: .rounded).weight(selected ? .bold : .regular))
                                 .foregroundStyle(palette.primaryLabel)
+                                .shadow(color: .black.opacity(palette.isKatseye ? 0.5 : 0), radius: 1, y: 1)
                                 .lineLimit(1)
                         }
                         .padding(.horizontal, 12)
@@ -123,6 +157,7 @@ struct KeyboardRootView: View {
                             } label: {
                                 Text(item.glyph)
                                     .font(.system(size: 28))
+                                    .shadow(color: .black.opacity(palette.isKatseye ? 0.45 : 0), radius: 1, y: 1)
                                     .frame(minWidth: 44, minHeight: 44)
                                     .contentShape(Rectangle())
                             }

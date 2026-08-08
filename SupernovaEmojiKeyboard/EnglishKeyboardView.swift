@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// English QWERTY / numbers / symbols surfaces with rounded lettering.
 /// Keys expand to fill the full keyboard height (no dead space at the bottom).
@@ -110,11 +111,17 @@ struct EnglishKeyboardView: View {
             viewModel.insertKey(key)
         } label: {
             Text(label)
-                .font(.system(size: letterSize(for: label, base: letterFont), weight: .semibold, design: .rounded))
+                .font(.system(size: letterSize(for: label, base: letterFont), weight: .bold, design: .rounded))
                 .foregroundStyle(palette.letterKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: 0, x: 0, y: 1)
+                .shadow(color: palette.letterKeyTextShadow, radius: 2, x: 0, y: 0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(letterKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+                )
                 .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -212,13 +219,18 @@ struct EnglishKeyboardView: View {
         Button {
             viewModel.insertSpace()
         } label: {
-            Text(viewModel.preferences.theme.id == "katseye" ? "KATSEYE" : "space")
+            Text("space")
                 .font(.system(size: max(13, height * 0.28), weight: .bold, design: .rounded))
-                .tracking(viewModel.preferences.theme.id == "katseye" ? 1.2 : 0)
                 .foregroundStyle(palette.letterKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: 0, x: 0, y: 1)
+                .shadow(color: palette.letterKeyTextShadow, radius: 2, x: 0, y: 0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(letterKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+                )
         }
         .buttonStyle(KeyboardKeyButtonStyle())
         .accessibilityLabel("Space")
@@ -228,11 +240,24 @@ struct EnglishKeyboardView: View {
         Button {
             viewModel.showPanel(.emoji)
         } label: {
-            Text("👁️")
-                .font(.system(size: max(18, height * 0.42)))
-                .frame(width: width, height: height)
-                .background(actionKeyBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            Group {
+                if palette.isKatseye {
+                    Image("KatseyeLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(4)
+                } else {
+                    Text("😊")
+                        .font(.system(size: max(20, height * 0.45)))
+                }
+            }
+            .frame(width: width, height: height)
+            .background(actionKeyBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+            )
         }
         .buttonStyle(KeyboardKeyButtonStyle())
         .accessibilityLabel("Emoji keyboard")
@@ -261,7 +286,7 @@ struct EnglishKeyboardView: View {
     private var letterKeyBackground: some View {
         RoundedRectangle(cornerRadius: 8, style: .continuous)
             .fill(palette.letterKeyFill)
-            .shadow(color: palette.keyShadow, radius: 0.5, y: 1)
+            .shadow(color: palette.keyShadow, radius: palette.isKatseye ? 0 : 0.5, y: 1)
     }
 
     private var actionKeyBackground: some View {
