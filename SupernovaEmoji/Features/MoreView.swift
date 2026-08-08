@@ -5,9 +5,9 @@ struct MoreView: View {
         NavigationStack {
             List {
                 NavigationLink {
-                    PrivacyCardView()
+                    AboutShreyaaView()
                 } label: {
-                    Label("Privacy", systemImage: "hand.raised")
+                    Label("About Shreyaa", systemImage: "star.fill")
                         .frame(minHeight: 44)
                 }
 
@@ -21,7 +21,7 @@ struct MoreView: View {
                 NavigationLink {
                     DiagnosticsView()
                 } label: {
-                    Label("Diagnostics", systemImage: "wrench.and.screwdriver")
+                    Label("Nerd stuff", systemImage: "wrench.and.screwdriver")
                         .frame(minHeight: 44)
                 }
             }
@@ -33,16 +33,15 @@ struct MoreView: View {
 struct HelpView: View {
     var body: some View {
         List {
-            Section("Keyboard") {
-                Text("If the keyboard does not appear, confirm it is added under Settings → General → Keyboard → Keyboards.")
-                Text("Keep Allow Full Access turned OFF.")
-                Text("Use the globe key to switch keyboards.")
+            Section("Can't find the keyboard?") {
+                Text("Settings → General → Keyboard → Keyboards → Add New Keyboard → Shreyaa's Slayy.")
+                Text("In a chat, tap the globe key until it switches to mine.")
             }
             Section("Favorites") {
-                Text("In the keyboard, press and hold an emoji to add or remove a favorite.")
+                Text("Press and hold an emoji to add (or yeet) a favorite.")
             }
-            Section("Privacy") {
-                Text("Supernova Emoji does not need network access and does not log typing.")
+            Section("Vibes") {
+                Text("This is Shreyaa's Slayy Keyboard — made for fun texts, silly reactions, and main-character energy.")
             }
         }
         .navigationTitle("Help")
@@ -69,22 +68,18 @@ struct DiagnosticsView: View {
     var body: some View {
         List {
             Section("Build") {
+                LabeledContent("App name", value: "Shreyaa's Slayy Keyboard")
                 LabeledContent("App version", value: appVersion)
                 LabeledContent("Bundle ID", value: Bundle.main.bundleIdentifier ?? "—")
                 LabeledContent("Catalog", value: catalogStatus)
             }
-            Section("Privacy") {
-                LabeledContent("Full Access required", value: "No")
-                LabeledContent("Networking", value: "None in product")
-                LabeledContent("Analytics", value: "None")
-            }
             Section {
-                Text("This screen never shows device identifiers, Team IDs, or personal data.")
+                Text("Just build info — nothing personal, nothing boring.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
         }
-        .navigationTitle("Diagnostics")
+        .navigationTitle("Nerd stuff")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

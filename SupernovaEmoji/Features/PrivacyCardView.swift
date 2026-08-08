@@ -1,24 +1,33 @@
 import SwiftUI
 
-struct PrivacyCardView: View {
+/// Fun about page (replaces corporate privacy card on the home flow).
+struct AboutShreyaaView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Privacy promise")
+                Image("CoverPhoto")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 220)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .accessibilityLabel("Photo of Shreyaa")
+
+                Text("About this keyboard")
                     .font(.title.bold())
 
-                Text("Supernova Emoji is built to stay on your device.")
+                Text("Hi, I'm Shreyaa ✌️ and this is my Slayy Keyboard. I made it so texting can feel more like me — silly faces, big energy, zero boring.")
                     .font(.body)
 
                 Group {
-                    row("We do not collect personal information.")
-                    row("We do not log what you type.")
-                    row("We do not use analytics or ads.")
-                    row("The keyboard does not need Full Access.")
-                    row("Preferences like favorites stay local.")
+                    row("Peace signs are kind of my brand.")
+                    row("Orange dress energy forever.")
+                    row("If it's not fun, why are we even typing?")
+                    row("Pick favorites, spam your besties, live your best chat life.")
                 }
 
-                Text("You can leave Allow Full Access turned OFF when enabling the keyboard in Settings.")
+                Text("Pro tip: after you enable it, hit the globe key and boom — you're in Slayy mode.")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .padding(.top, 8)
@@ -26,14 +35,14 @@ struct PrivacyCardView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .navigationTitle("Privacy")
+        .navigationTitle("About")
         .navigationBarTitleDisplayMode(.inline)
     }
 
     private func row(_ text: String) -> some View {
         HStack(alignment: .top, spacing: 12) {
-            Image(systemName: "checkmark.circle.fill")
-                .foregroundStyle(.green)
+            Image(systemName: "sparkle")
+                .foregroundStyle(.orange)
                 .accessibilityHidden(true)
             Text(text)
                 .font(.body)
@@ -42,3 +51,6 @@ struct PrivacyCardView: View {
         .accessibilityElement(children: .combine)
     }
 }
+
+// Keep old name as alias so any leftover links still compile.
+typealias PrivacyCardView = AboutShreyaaView
