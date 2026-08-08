@@ -36,7 +36,8 @@ struct KeyboardThemePalette {
 
     var letterKeyFill: Color {
         if isKatseye {
-            return Color.white.opacity(0.55)
+            // Clear glass — photo shows through; letters stay readable via ink + halo.
+            return Color.white.opacity(0.18)
         }
         switch theme.id {
         case "highContrast":
@@ -47,7 +48,7 @@ struct KeyboardThemePalette {
     }
 
     var letterKeyStroke: Color {
-        if isKatseye { return Color.white.opacity(0.85) }
+        if isKatseye { return Color.white.opacity(0.55) }
         return .clear
     }
 
@@ -62,12 +63,13 @@ struct KeyboardThemePalette {
     }
 
     var letterKeyTextShadow: Color {
-        if isKatseye { return Color.white.opacity(0.65) }
+        // Light halo so dark ink stays visible over bright photo regions.
+        if isKatseye { return Color.white.opacity(0.95) }
         return .clear
     }
 
     var actionKeyFill: Color {
-        if isKatseye { return Self.lilac.opacity(0.72) }
+        if isKatseye { return Color.white.opacity(0.22) }
         switch theme.id {
         case "highContrast":
             return colorScheme == .dark ? Color(white: 0.3) : Color(white: 0.75)
@@ -82,7 +84,7 @@ struct KeyboardThemePalette {
     }
 
     var returnKeyFill: Color {
-        if isKatseye { return Self.pink.opacity(0.92) }
+        if isKatseye { return Self.pink.opacity(0.55) }
         return Color.accentColor.opacity(colorScheme == .dark ? 0.85 : 1)
     }
 
@@ -92,7 +94,7 @@ struct KeyboardThemePalette {
     }
 
     var shiftActiveFill: Color {
-        if isKatseye { return Self.sky.opacity(0.9) }
+        if isKatseye { return Self.sky.opacity(0.55) }
         return colorScheme == .dark ? Color.white : Color.black.opacity(0.85)
     }
 
@@ -102,7 +104,7 @@ struct KeyboardThemePalette {
     }
 
     var keyShadow: Color {
-        if isKatseye { return Self.plum.opacity(0.12) }
+        if isKatseye { return Color.black.opacity(0.12) }
         return .black.opacity(colorScheme == .dark ? 0.35 : 0.12)
     }
 

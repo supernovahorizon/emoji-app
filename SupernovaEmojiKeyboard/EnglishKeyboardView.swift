@@ -108,10 +108,12 @@ struct EnglishKeyboardView: View {
             viewModel.insertKey(key)
         } label: {
             Text(label)
-                .font(.system(size: letterSize(for: label, base: letterFont), weight: .bold, design: .rounded))
+                .font(.system(size: letterSize(for: label, base: letterFont), weight: .heavy, design: .rounded))
                 .foregroundStyle(palette.letterKeyText)
-                .shadow(color: palette.letterKeyTextShadow, radius: 0, x: 0, y: 1)
-                .shadow(color: palette.letterKeyTextShadow, radius: 2, x: 0, y: 0)
+                // Readable halo without milking the photo background.
+                .shadow(color: palette.letterKeyTextShadow, radius: 0, x: 0, y: 0)
+                .shadow(color: palette.letterKeyTextShadow, radius: 1.2, x: 0, y: 0)
+                .shadow(color: palette.letterKeyTextShadow, radius: 2.5, x: 0, y: 0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(letterKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -131,12 +133,17 @@ struct EnglishKeyboardView: View {
             viewModel.cycleShift()
         } label: {
             Image(systemName: shiftSymbol)
-                .font(.system(size: max(15, height * 0.36), weight: .semibold, design: .rounded))
+                .font(.system(size: max(15, height * 0.36), weight: .bold, design: .rounded))
                 .foregroundStyle(active ? palette.shiftActiveText : palette.actionKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: palette.isKatseye ? 1.5 : 0)
                 .frame(width: width, height: height)
                 .background(
                     RoundedRectangle(cornerRadius: 8, style: .continuous)
                         .fill(active ? palette.shiftActiveFill : palette.actionKeyFill)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -149,10 +156,15 @@ struct EnglishKeyboardView: View {
             viewModel.deleteBackward()
         } label: {
             Image(systemName: "delete.left")
-                .font(.system(size: max(15, height * 0.36), weight: .semibold, design: .rounded))
+                .font(.system(size: max(15, height * 0.36), weight: .bold, design: .rounded))
                 .foregroundStyle(palette.actionKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: palette.isKatseye ? 1.5 : 0)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -168,10 +180,15 @@ struct EnglishKeyboardView: View {
             }
         } label: {
             Text(modeKeyTitle)
-                .font(.system(size: max(13, height * 0.28), weight: .semibold, design: .rounded))
+                .font(.system(size: max(13, height * 0.28), weight: .heavy, design: .rounded))
                 .foregroundStyle(palette.actionKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: palette.isKatseye ? 1.5 : 0)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -187,10 +204,15 @@ struct EnglishKeyboardView: View {
             }
         } label: {
             Text(viewModel.panel == .numbers ? "#+=" : "123")
-                .font(.system(size: max(11, height * 0.24), weight: .semibold, design: .rounded))
+                .font(.system(size: max(11, height * 0.24), weight: .heavy, design: .rounded))
                 .foregroundStyle(palette.actionKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: palette.isKatseye ? 1.5 : 0)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -202,10 +224,15 @@ struct EnglishKeyboardView: View {
             viewModel.nextKeyboard()
         } label: {
             Image(systemName: "globe")
-                .font(.system(size: max(16, height * 0.36), weight: .medium, design: .rounded))
+                .font(.system(size: max(16, height * 0.36), weight: .bold, design: .rounded))
                 .foregroundStyle(palette.actionKeyText)
+                .shadow(color: palette.letterKeyTextShadow, radius: palette.isKatseye ? 1.5 : 0)
                 .frame(width: width, height: height)
                 .background(actionKeyBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(palette.letterKeyStroke, lineWidth: palette.isKatseye ? 1 : 0)
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
         .buttonStyle(KeyboardKeyButtonStyle())
@@ -217,10 +244,10 @@ struct EnglishKeyboardView: View {
             viewModel.insertSpace()
         } label: {
             Text("space")
-                .font(.system(size: max(13, height * 0.28), weight: .bold, design: .rounded))
+                .font(.system(size: max(13, height * 0.28), weight: .heavy, design: .rounded))
                 .foregroundStyle(palette.letterKeyText)
-                .shadow(color: palette.letterKeyTextShadow, radius: 0, x: 0, y: 1)
-                .shadow(color: palette.letterKeyTextShadow, radius: 2, x: 0, y: 0)
+                .shadow(color: palette.letterKeyTextShadow, radius: 1.2, x: 0, y: 0)
+                .shadow(color: palette.letterKeyTextShadow, radius: 2.5, x: 0, y: 0)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(letterKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -282,49 +309,14 @@ struct EnglishKeyboardView: View {
     // MARK: Appearance
 
     private var letterKeyBackground: some View {
-        Group {
-            if palette.isKatseye {
-                // Frosted pearl key surface from palette (asset kit mood).
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color.white.opacity(0.78),
-                                KeyboardThemePalette.pearl.opacity(0.62),
-                                KeyboardThemePalette.blush.opacity(0.35)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                    .shadow(color: palette.keyShadow, radius: 1, y: 1)
-            } else {
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(palette.letterKeyFill)
-                    .shadow(color: palette.keyShadow, radius: 0.5, y: 1)
-            }
-        }
+        RoundedRectangle(cornerRadius: 8, style: .continuous)
+            .fill(palette.letterKeyFill)
+            .shadow(color: palette.keyShadow, radius: palette.isKatseye ? 0.5 : 0.5, y: 1)
     }
 
     private var actionKeyBackground: some View {
-        Group {
-            if palette.isKatseye {
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                KeyboardThemePalette.lilac.opacity(0.85),
-                                KeyboardThemePalette.sky.opacity(0.55)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-            } else {
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(palette.actionKeyFill)
-            }
-        }
+        RoundedRectangle(cornerRadius: 8, style: .continuous)
+            .fill(palette.actionKeyFill)
     }
 
     private var shiftSymbol: String {

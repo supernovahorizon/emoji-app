@@ -35,26 +35,13 @@ struct KeyboardRootView: View {
     }
 
     private var katseyeWallpaper: some View {
-        ZStack {
-            GeometryReader { geo in
-                Image(palette.backgroundAssetName)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .clipped()
-            }
-            // Soft pastel veil for frosted keys + ink letter readability
-            LinearGradient(
-                colors: [
-                    Color.white.opacity(0.28),
-                    KeyboardThemePalette.pearl.opacity(0.22),
-                    Color.white.opacity(0.35)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            palette.boardGlow
-                .opacity(0.7)
+        // Sharp photo only — no blur/veil. Letter contrast comes from key labels.
+        GeometryReader { geo in
+            Image(palette.backgroundAssetName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: geo.size.width, height: geo.size.height)
+                .clipped()
         }
         .allowsHitTesting(false)
     }
@@ -74,6 +61,7 @@ struct KeyboardRootView: View {
                         .font(.system(size: 11, weight: .bold, design: .rounded))
                         .tracking(1.5)
                         .foregroundStyle(palette.primaryLabel)
+                        .shadow(color: .white.opacity(0.9), radius: 1.5, x: 0, y: 0)
                     Spacer()
                 }
                 .padding(.horizontal, 6)
