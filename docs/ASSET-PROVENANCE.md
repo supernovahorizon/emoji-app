@@ -75,3 +75,14 @@ Downloaded from the official KATSEYE shop CDN:
 | `SupernovaEmoji/Assets.xcassets/AppIcon.appiconset/AppIcon.png` | **1024×1024 RGB**, white background, ~18% safe margin, no alpha |
 
 Trademark: HYBE / Geffen — personal/local development use only; commercial distribution requires license.
+
+## App icon colors
+
+Icon uses the official symbol artwork recolored with brand-aligned colors reported/used in KATSEYE identity systems (not flat black-on-white):
+
+- Hot pink / magenta (current pink logo era)
+- Lilac + sky (iridescent gem treatment from brand identity)
+- Butter yellow edge highlights
+- Deep night background `#13111E`
+
+Still based on official shop symbol geometry from `04_KATSEYE_Symbol_Black.png`.
