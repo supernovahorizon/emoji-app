@@ -8,6 +8,8 @@ public final class KeyboardViewModel: ObservableObject {
     @Published public private(set) var preferences: KeyboardPreferences
     @Published public var selectedCategoryId: String
     @Published public private(set) var loadFailed: Bool
+    @Published public var panel: KeyboardPanel
+    @Published public var shiftState: ShiftState
 
     private let store: any KeyboardPreferencesStore
     private let input: any TextInputHandling
@@ -16,12 +18,15 @@ public final class KeyboardViewModel: ObservableObject {
         catalog: EmojiCatalog,
         store: any KeyboardPreferencesStore,
         input: any TextInputHandling,
-        loadFailed: Bool = false
+        loadFailed: Bool = false,
+        initialPanel: KeyboardPanel = .letters
     ) {
         self.catalog = catalog
         self.store = store
         self.input = input
         self.loadFailed = loadFailed
+        self.panel = initialPanel
+        self.shiftState = .off
         let prefs = store.load()
         self.preferences = prefs
         self.selectedCategoryId = catalog.resolvedCategoryId(selected: prefs.selectedCategoryId)
@@ -29,7 +34,6 @@ public final class KeyboardViewModel: ObservableObject {
 
     public var displayCategories: [EmojiCategory] {
         var list = catalog.sortedCategories
-        // Ensure favorites chip exists even if not in JSON
         if !list.contains(where: { $0.id == "favorites" }) {
             list.insert(
                 EmojiCategory(id: "favorites", title: "Favorites", symbol: "★", sortOrder: -1),
@@ -48,10 +52,60 @@ public final class KeyboardViewModel: ObservableObject {
         return catalog.items(in: selectedCategoryId)
     }
 
+    /// Whether letter keys should show uppercase glyphs.
+    public var isUppercase: Bool {
+        shiftState != .off
+    }
+
     public func selectCategory(_ id: String) {
         selectedCategoryId = id
         preferences.selectedCategoryId = id
         persist()
+    }
+
+    public func showPanel(_ panel: KeyboardPanel) {
+        self.panel = panel
+        if panel != .letters {
+            shiftState = .off
+        }
+    }
+
+    public func toggleEmojiPanel() {
+        if panel == .emoji {
+            showPanel(.letters)
+        } else {
+            showPanel(.emoji)
+        }
+    }
+
+    public func cycleShift() {
+        switch shiftState {
+        case .off:
+            shiftState = .once
+        case .once:
+            shiftState = .locked
+        case .locked:
+            shiftState = .off
+        }
+    }
+
+    public func insertKey(_ key: String) {
+        var text = key
+        if panel == .letters, key.count == 1, key.rangeOfCharacter(from: .letters) != nil {
+            text = isUppercase ? key.uppercased() : key.lowercased()
+            if shiftState == .once {
+                shiftState = .off
+            }
+        }
+        input.insertText(text)
+    }
+
+    public func insertSpace() {
+        input.insertText(" ")
+    }
+
+    public func insertReturn() {
+        input.insertText("\n")
     }
 
     public func insertEmoji(_ item: EmojiItem) {

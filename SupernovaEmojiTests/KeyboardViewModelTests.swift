@@ -60,4 +60,75 @@ final class KeyboardViewModelTests: XCTestCase {
         vm.selectCategory("favorites")
         XCTAssertEqual(vm.visibleItems.map(\.id), ["b"])
     }
+
+    func testLetterInsertLowercaseByDefault() {
+        let input = RecordingTextInputHandler()
+        let vm = KeyboardViewModel(
+            catalog: makeCatalog(),
+            store: InMemoryPreferencesStore(),
+            input: input,
+            initialPanel: .letters
+        )
+        vm.insertKey("h")
+        vm.insertKey("i")
+        XCTAssertEqual(input.actions, [.insert("h"), .insert("i")])
+    }
+
+    func testShiftOnceCapitalizesNextLetterOnly() {
+        let input = RecordingTextInputHandler()
+        let vm = KeyboardViewModel(
+            catalog: makeCatalog(),
+            store: InMemoryPreferencesStore(),
+            input: input,
+            initialPanel: .letters
+        )
+        vm.cycleShift()
+        XCTAssertEqual(vm.shiftState, .once)
+        vm.insertKey("h")
+        vm.insertKey("i")
+        XCTAssertEqual(input.actions, [.insert("H"), .insert("i")])
+        XCTAssertEqual(vm.shiftState, .off)
+    }
+
+    func testCapsLockStaysOn() {
+        let input = RecordingTextInputHandler()
+        let vm = KeyboardViewModel(
+            catalog: makeCatalog(),
+            store: InMemoryPreferencesStore(),
+            input: input,
+            initialPanel: .letters
+        )
+        vm.cycleShift()
+        vm.cycleShift()
+        XCTAssertEqual(vm.shiftState, .locked)
+        vm.insertKey("y")
+        vm.insertKey("o")
+        XCTAssertEqual(input.actions, [.insert("Y"), .insert("O")])
+        XCTAssertEqual(vm.shiftState, .locked)
+    }
+
+    func testSpaceAndReturn() {
+        let input = RecordingTextInputHandler()
+        let vm = KeyboardViewModel(
+            catalog: makeCatalog(),
+            store: InMemoryPreferencesStore(),
+            input: input
+        )
+        vm.insertSpace()
+        vm.insertReturn()
+        XCTAssertEqual(input.actions, [.insert(" "), .insert("\n")])
+    }
+
+    func testPanelToggleToEmojiAndBack() {
+        let vm = KeyboardViewModel(
+            catalog: makeCatalog(),
+            store: InMemoryPreferencesStore(),
+            input: RecordingTextInputHandler(),
+            initialPanel: .letters
+        )
+        vm.showPanel(.emoji)
+        XCTAssertEqual(vm.panel, .emoji)
+        vm.showPanel(.letters)
+        XCTAssertEqual(vm.panel, .letters)
+    }
 }

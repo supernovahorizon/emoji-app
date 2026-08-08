@@ -6,11 +6,18 @@ final class KeyboardViewController: UIInputViewController {
     private var hostingController: UIHostingController<KeyboardRootView>?
     private var viewModel: KeyboardViewModel?
     private var inputAdapter: ProxyTextInputHandler?
+    private var heightConstraint: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .systemGray5
         setupKeyboard()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Give the keyboard a comfortable typing height (portrait baseline).
+        updateKeyboardHeight()
     }
 
     override func viewWillLayoutSubviews() {
@@ -45,11 +52,13 @@ final class KeyboardViewController: UIInputViewController {
             loadFailed = true
         }
 
+        // Default to English letters so people can type immediately.
         let model = KeyboardViewModel(
             catalog: catalog,
             store: store,
             input: adapter,
-            loadFailed: loadFailed
+            loadFailed: loadFailed,
+            initialPanel: .letters
         )
         self.viewModel = model
 
@@ -68,6 +77,18 @@ final class KeyboardViewController: UIInputViewController {
         ])
         host.didMove(toParent: self)
         hostingController = host
+
+        let height = view.heightAnchor.constraint(equalToConstant: 280)
+        height.priority = .defaultHigh
+        height.isActive = true
+        heightConstraint = height
+    }
+
+    private func updateKeyboardHeight() {
+        let screenHeight = UIScreen.main.bounds.height
+        // ~34% of screen feels natural for a full QWERTY board on phone.
+        let target = min(max(screenHeight * 0.34, 260), 320)
+        heightConstraint?.constant = target
     }
 
     private static func fallbackCatalog() -> EmojiCatalog {

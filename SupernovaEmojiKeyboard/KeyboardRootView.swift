@@ -8,14 +8,17 @@ struct KeyboardRootView: View {
     private let columns = [GridItem(.adaptive(minimum: 44, maximum: 56), spacing: 6)]
 
     var body: some View {
-        VStack(spacing: 8) {
-            categoryBar
-            emojiGrid
-            actionBar
+        VStack(spacing: 6) {
+            if viewModel.panel == .emoji {
+                emojiChrome
+            } else {
+                EnglishKeyboardView(viewModel: viewModel)
+            }
         }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 6)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 4)
+        .padding(.top, 6)
+        .padding(.bottom, 4)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(backgroundColor)
         .accessibilityElement(children: .contain)
     }
@@ -27,7 +30,17 @@ struct KeyboardRootView: View {
         case "highContrast":
             return colorScheme == .dark ? .black : .white
         default:
-            return Color(uiColor: .secondarySystemBackground)
+            return Color(uiColor: .systemGray5)
+        }
+    }
+
+    // MARK: Emoji mode
+
+    private var emojiChrome: some View {
+        VStack(spacing: 6) {
+            categoryBar
+            emojiGrid
+            emojiActionBar
         }
     }
 
@@ -48,11 +61,11 @@ struct KeyboardRootView: View {
                         HStack(spacing: 4) {
                             Text(category.symbol)
                             Text(category.title)
-                                .font(.caption.weight(selected ? .bold : .regular))
+                                .font(.system(.caption, design: .rounded).weight(selected ? .bold : .regular))
                                 .lineLimit(1)
                         }
                         .padding(.horizontal, 12)
-                        .frame(minHeight: 44)
+                        .frame(minHeight: 40)
                         .background(
                             Capsule()
                                 .fill(selected ? Color.accentColor.opacity(0.25) : Color.primary.opacity(0.06))
@@ -77,11 +90,11 @@ struct KeyboardRootView: View {
             if viewModel.visibleItems.isEmpty {
                 VStack(spacing: 8) {
                     Text(viewModel.selectedCategoryId == "favorites" ? "No favorites yet" : "No emoji")
-                        .font(.subheadline)
+                        .font(.system(.subheadline, design: .rounded))
                         .foregroundStyle(.secondary)
                     if viewModel.loadFailed {
                         Text("Using safe fallback catalog")
-                            .font(.caption)
+                            .font(.system(.caption, design: .rounded))
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -114,18 +127,32 @@ struct KeyboardRootView: View {
         }
     }
 
-    private var actionBar: some View {
-        HStack(spacing: 12) {
+    private var emojiActionBar: some View {
+        HStack(spacing: 10) {
             Button {
                 viewModel.nextKeyboard()
             } label: {
                 Image(systemName: "globe")
-                    .font(.system(size: 20, weight: .medium))
-                    .frame(minWidth: 44, minHeight: 44)
-                    .contentShape(Rectangle())
+                    .font(.system(size: 18, weight: .medium, design: .rounded))
+                    .frame(minWidth: 44, minHeight: 40)
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Next keyboard")
+
+            Button {
+                viewModel.showPanel(.letters)
+            } label: {
+                Text("ABC")
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .frame(minWidth: 52, minHeight: 40)
+                    .padding(.horizontal, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .fill(Color.primary.opacity(0.08))
+                    )
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Letters keyboard")
 
             Spacer()
 
@@ -133,9 +160,8 @@ struct KeyboardRootView: View {
                 viewModel.deleteBackward()
             } label: {
                 Image(systemName: "delete.left")
-                    .font(.system(size: 20, weight: .medium))
-                    .frame(minWidth: 44, minHeight: 44)
-                    .contentShape(Rectangle())
+                    .font(.system(size: 18, weight: .medium, design: .rounded))
+                    .frame(minWidth: 44, minHeight: 40)
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Delete")
