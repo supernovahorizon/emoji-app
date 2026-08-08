@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main, feat/**]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Build, Test, Privacy
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Bootstrap project
+        run: make bootstrap
+
+      - name: Privacy check
+        run: make privacy-check
+
+      - name: Simulator build
+        run: make build
+
+      - name: Unit tests
+        run: make test
