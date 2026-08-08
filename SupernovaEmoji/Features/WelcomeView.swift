@@ -10,6 +10,9 @@ struct WelcomeView: View {
                     Text("Shreyaa's Slayy Keyboard")
                         .font(.largeTitle.bold())
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .minimumScaleFactor(0.85)
+                        .lineLimit(3)
                         .accessibilityAddTraits(.isHeader)
 
                     Text("Heyyy 👋 this is my emoji keyboard. Peace signs up, boring vibes out.")
@@ -50,20 +53,27 @@ struct WelcomeView: View {
     }
 
     private var coverPhoto: some View {
-        Image("CoverPhoto")
-            .resizable()
-            .scaledToFill()
+        // Align to top so hair/face are not clipped when filling the frame.
+        Color.clear
             .frame(maxWidth: .infinity)
-            .frame(height: 320)
+            .frame(height: 380)
+            .overlay(alignment: .top) {
+                Image("CoverPhoto")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .overlay(alignment: .bottomLeading) {
                 LinearGradient(
-                    colors: [.clear, .black.opacity(0.55)],
+                    colors: [.clear, .black.opacity(0.45)],
                     startPoint: .center,
                     endPoint: .bottom
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                .allowsHitTesting(false)
             }
             .overlay(alignment: .bottomLeading) {
                 VStack(alignment: .leading, spacing: 4) {

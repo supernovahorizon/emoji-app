@@ -5,11 +5,14 @@ struct AboutShreyaaView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Image("CoverPhoto")
-                    .resizable()
-                    .scaledToFill()
+                Color.clear
                     .frame(maxWidth: .infinity)
-                    .frame(height: 220)
+                    .frame(height: 260)
+                    .overlay(alignment: .top) {
+                        Image("CoverPhoto")
+                            .resizable()
+                            .scaledToFill()
+                    }
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .accessibilityLabel("Photo of Shreyaa")
