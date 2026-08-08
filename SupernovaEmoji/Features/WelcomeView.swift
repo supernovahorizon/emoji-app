@@ -1,11 +1,14 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @ObservedObject private var photoStore = ProfilePhotoStore.shared
+    @State private var showEditLooks = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    coverPhoto
+                    CoverImageView(store: photoStore, height: 380)
 
                     Text("Shreyaa's Slayy Keyboard")
                         .font(.largeTitle.bold())
@@ -49,49 +52,25 @@ struct WelcomeView: View {
             }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-
-    private var coverPhoto: some View {
-        // Align to top so hair/face are not clipped when filling the frame.
-        Color.clear
-            .frame(maxWidth: .infinity)
-            .frame(height: 380)
-            .overlay(alignment: .top) {
-                Image("CoverPhoto")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            .clipped()
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-            .overlay(alignment: .bottomLeading) {
-                LinearGradient(
-                    colors: [.clear, .black.opacity(0.45)],
-                    startPoint: .center,
-                    endPoint: .bottom
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                .allowsHitTesting(false)
-            }
-            .overlay(alignment: .bottomLeading) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("✨ main character energy")
-                        .font(.caption.weight(.semibold))
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .background(.ultraThinMaterial, in: Capsule())
-                    Text("Shreyaa")
-                        .font(.title2.bold())
-                        .foregroundStyle(.white)
-                    Text("slay mode: ON")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.white.opacity(0.9))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showEditLooks = true
+                    } label: {
+                        Image(systemName: "pencil.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.title2)
+                            .frame(minWidth: 44, minHeight: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel("Edit looks")
+                    .accessibilityHint("Change cover photo or get help with a custom app icon")
                 }
-                .padding(16)
             }
-            .accessibilityLabel("Cover photo of Shreyaa making a fun peace-sign pose")
+            .sheet(isPresented: $showEditLooks) {
+                EditLooksView(store: photoStore)
+            }
+        }
     }
 
     private var vibeCard: some View {

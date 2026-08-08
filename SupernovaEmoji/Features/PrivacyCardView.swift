@@ -2,20 +2,17 @@ import SwiftUI
 
 /// Fun about page (replaces corporate privacy card on the home flow).
 struct AboutShreyaaView: View {
+    @ObservedObject private var photoStore = ProfilePhotoStore.shared
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Color.clear
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 260)
-                    .overlay(alignment: .top) {
-                        Image("CoverPhoto")
-                            .resizable()
-                            .scaledToFill()
-                    }
-                    .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .accessibilityLabel("Photo of Shreyaa")
+                CoverImageView(
+                    store: photoStore,
+                    height: 260,
+                    cornerRadius: 20,
+                    showCaption: false
+                )
 
                 Text("About this keyboard")
                     .font(.title.bold())
@@ -34,6 +31,10 @@ struct AboutShreyaaView: View {
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .padding(.top, 8)
+
+                Text("Wanna swap the cover pic? Hit Edit (pencil) on Home.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)

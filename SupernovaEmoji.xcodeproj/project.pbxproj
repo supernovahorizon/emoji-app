@@ -42,6 +42,9 @@
 		A174C8DA8864F65EC6000B38 /* TextInputHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CE84F8910508AB510B8CB /* TextInputHandling.swift */; };
 		A3C0D196AF4795E7B2393425 /* KeyboardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9576046F13372728A5D2CD /* KeyboardTheme.swift */; };
 		AB35F82BAF25B2C670ED179A /* emoji_catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 23E6670401F165AB986EFE9B /* emoji_catalog.json */; };
+		B3AE1110362E9E576F103261 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B57458922B015A795BF83D /* CoverImageView.swift */; };
+		B61D38AC89104D58E501CBC4 /* EditLooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5799F84C3AF2A4A8C6DC0C3B /* EditLooksView.swift */; };
+		C00E10EC79FAB7D8CBE7DC92 /* ProfilePhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C086651E00E286F5B1E46 /* ProfilePhotoStore.swift */; };
 		C3537879D955E0CBCFB25802 /* EmojiCatalogValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB8063C5AA69A1E59683C4 /* EmojiCatalogValidator.swift */; };
 		C93677A778F7F28A21CDA7F3 /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F927702A7561BB94C271 /* EmojiItem.swift */; };
 		D015C00DBBB839AF8DB14824 /* EmojiCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C22FA2A11D02118495344F /* EmojiCatalog.swift */; };
@@ -109,9 +112,12 @@
 		0AAFF95E62B445DF00C2F7F7 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		0B4639876729552B94E9333B /* SupernovaEmojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupernovaEmojiApp.swift; sourceTree = "<group>"; };
 		23E6670401F165AB986EFE9B /* emoji_catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emoji_catalog.json; sourceTree = "<group>"; };
+		272C086651E00E286F5B1E46 /* ProfilePhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoStore.swift; sourceTree = "<group>"; };
 		351B478E6B5DF3D15BC43175 /* KeyboardPreferencesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPreferencesStore.swift; sourceTree = "<group>"; };
+		38B57458922B015A795BF83D /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		3C5D34D5FC56FC11375C16CA /* KeyboardPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPreferences.swift; sourceTree = "<group>"; };
 		436FF49CD17E911D6FF8669B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5799F84C3AF2A4A8C6DC0C3B /* EditLooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLooksView.swift; sourceTree = "<group>"; };
 		58E40F6CC95402EA165FE2F9 /* KeyboardRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRootView.swift; sourceTree = "<group>"; };
 		661685AF7CEA7E553D30774C /* KeyboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModelTests.swift; sourceTree = "<group>"; };
 		66C22FA2A11D02118495344F /* EmojiCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCatalog.swift; sourceTree = "<group>"; };
@@ -143,6 +149,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		1046D01FD4DA0BA62D9B4D8C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				38B57458922B015A795BF83D /* CoverImageView.swift */,
+				5799F84C3AF2A4A8C6DC0C3B /* EditLooksView.swift */,
+				272C086651E00E286F5B1E46 /* ProfilePhotoStore.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		1209347B1C8750B7FFAA4A05 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				1392D9C6BF5911B91256A297 /* Features */,
+				1046D01FD4DA0BA62D9B4D8C /* Profile */,
 				C360BAD7A3E9725B29FBA8EA /* Assets.xcassets */,
 				436FF49CD17E911D6FF8669B /* Info.plist */,
 				0AAFF95E62B445DF00C2F7F7 /* RootTabView.swift */,
@@ -501,6 +518,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3AE1110362E9E576F103261 /* CoverImageView.swift in Sources */,
+				B61D38AC89104D58E501CBC4 /* EditLooksView.swift in Sources */,
 				0E2B21A7BB1EB4029B979C2A /* EmojiCatalog.swift in Sources */,
 				D1F718675E2C4946FD03019C /* EmojiCatalogLoader.swift in Sources */,
 				C3537879D955E0CBCFB25802 /* EmojiCatalogValidator.swift in Sources */,
@@ -514,6 +533,7 @@
 				A119DB47C9EB609796589838 /* KeyboardViewModel.swift in Sources */,
 				4D6FE555A7FE3A676ADD8222 /* MoreView.swift in Sources */,
 				76D4FC228965653E19E63A55 /* PrivacyCardView.swift in Sources */,
+				C00E10EC79FAB7D8CBE7DC92 /* ProfilePhotoStore.swift in Sources */,
 				3A6A22E271DC878BBCF0345D /* RootTabView.swift in Sources */,
 				952D209A60EA0CB283AE3AF5 /* SupernovaEmojiApp.swift in Sources */,
 				D4AF060D752ACAB6765823A1 /* TextInputHandling.swift in Sources */,
