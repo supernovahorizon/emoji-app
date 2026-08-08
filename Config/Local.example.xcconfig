@@ -1,0 +1,5 @@
+// Copy to Local.xcconfig (gitignored) and set your team for device builds.
+// NEVER commit Local.xcconfig.
+
+DEVELOPMENT_TEAM = YOURTEAMID
+CODE_SIGN_STYLE = Automatic

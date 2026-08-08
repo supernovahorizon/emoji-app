@@ -1,0 +1,64 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+timeline.xctimeline
+playground.xcworkspace
+*.xcresult
+
+# Local signing (never commit Team ID)
+Config/Local.xcconfig
+
+# Signing artifacts
+*.mobileprovision
+*.p12
+*.cer
+*.key
+*.pem
+*.certSigningRequest
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+# CocoaPods / Carthage (unused, defensive)
+Pods/
+Carthage/Build/
+
+# IDEs
+.idea/
+*.swp
+*~
+
+# Tooling
+.grok/
+.claude/
+.cursor/
+
+# Reports / logs local only
+*.log
+/tmp/
