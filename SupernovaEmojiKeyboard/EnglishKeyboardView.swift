@@ -1,21 +1,37 @@
 import SwiftUI
 
 /// English QWERTY / numbers / symbols surfaces with rounded lettering.
+/// Keys expand to fill the full keyboard height (no dead space at the bottom).
 struct EnglishKeyboardView: View {
     @ObservedObject var viewModel: KeyboardViewModel
     @Environment(\.colorScheme) private var colorScheme
 
-    private let keyHeight: CGFloat = 42
     private let keySpacing: CGFloat = 5
-    private let rowSpacing: CGFloat = 8
+    private let rowSpacing: CGFloat = 7
 
     var body: some View {
-        VStack(spacing: rowSpacing) {
-            ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
-                keyRow(row, isThirdLetterRow: viewModel.panel == .letters && index == 2)
+        GeometryReader { geo in
+            let rowCount: CGFloat = 4
+            let totalRowSpacing = rowSpacing * (rowCount - 1)
+            let keyHeight = max(40, (geo.size.height - totalRowSpacing) / rowCount)
+            let letterFont = max(17, min(24, keyHeight * 0.42))
+            let sideKeyWidth = max(42, min(56, geo.size.width * 0.12))
+
+            VStack(spacing: rowSpacing) {
+                ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
+                    keyRow(
+                        row,
+                        isThirdLetterRow: viewModel.panel == .letters && index == 2,
+                        keyHeight: keyHeight,
+                        letterFont: letterFont,
+                        sideKeyWidth: sideKeyWidth
+                    )
+                }
+                bottomRow(keyHeight: keyHeight, sideKeyWidth: sideKeyWidth)
             }
-            bottomRow
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var rows: [[String]] {
@@ -34,44 +50,51 @@ struct EnglishKeyboardView: View {
     // MARK: Rows
 
     @ViewBuilder
-    private func keyRow(_ keys: [String], isThirdLetterRow: Bool) -> some View {
+    private func keyRow(
+        _ keys: [String],
+        isThirdLetterRow: Bool,
+        keyHeight: CGFloat,
+        letterFont: CGFloat,
+        sideKeyWidth: CGFloat
+    ) -> some View {
         HStack(spacing: keySpacing) {
             if isThirdLetterRow {
-                shiftKey
+                shiftKey(height: keyHeight, width: sideKeyWidth)
             } else if viewModel.panel != .letters, keys.count <= 5 {
-                // indent short bottom symbol/number rows slightly via flexible spacers
                 Spacer(minLength: 0)
             }
 
             ForEach(keys, id: \.self) { key in
-                characterKey(key)
+                characterKey(key, height: keyHeight, letterFont: letterFont)
             }
 
             if isThirdLetterRow {
-                deleteKey
+                deleteKey(height: keyHeight, width: sideKeyWidth)
             } else if viewModel.panel != .letters, keys.count <= 5 {
                 Spacer(minLength: 0)
-                deleteKey
+                deleteKey(height: keyHeight, width: sideKeyWidth)
             }
         }
+        .frame(height: keyHeight)
     }
 
-    private var bottomRow: some View {
+    private func bottomRow(keyHeight: CGFloat, sideKeyWidth: CGFloat) -> some View {
         HStack(spacing: keySpacing) {
-            modeKey
+            modeKey(height: keyHeight, width: sideKeyWidth)
             if viewModel.panel == .numbers || viewModel.panel == .symbols {
-                symbolsToggleKey
+                symbolsToggleKey(height: keyHeight, width: sideKeyWidth * 0.9)
             }
-            globeKey
-            spaceKey
-            emojiToggleKey
-            returnKey
+            globeKey(height: keyHeight, width: sideKeyWidth * 0.9)
+            spaceKey(height: keyHeight)
+            emojiToggleKey(height: keyHeight, width: sideKeyWidth * 0.9)
+            returnKey(height: keyHeight, width: max(64, sideKeyWidth * 1.35))
         }
+        .frame(height: keyHeight)
     }
 
     // MARK: Keys
 
-    private func characterKey(_ key: String) -> some View {
+    private func characterKey(_ key: String, height: CGFloat, letterFont: CGFloat) -> some View {
         let label: String = {
             if viewModel.panel == .letters, key.count == 1, key.rangeOfCharacter(from: .letters) != nil {
                 return viewModel.isUppercase ? key.uppercased() : key.lowercased()
@@ -83,10 +106,9 @@ struct EnglishKeyboardView: View {
             viewModel.insertKey(key)
         } label: {
             Text(label)
-                .font(.system(size: letterSize(for: label), weight: .medium, design: .rounded))
+                .font(.system(size: letterSize(for: label, base: letterFont), weight: .medium, design: .rounded))
                 .foregroundStyle(.primary)
-                .frame(maxWidth: .infinity)
-                .frame(height: keyHeight)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(keyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                 .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -95,14 +117,14 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel(accessibilityName(for: label))
     }
 
-    private var shiftKey: some View {
+    private func shiftKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.cycleShift()
         } label: {
             Image(systemName: shiftSymbol)
-                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                .font(.system(size: max(15, height * 0.36), weight: .semibold, design: .rounded))
                 .foregroundStyle(shiftForeground)
-                .frame(width: 46, height: keyHeight)
+                .frame(width: width, height: height)
                 .background(shiftBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -110,13 +132,13 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel(shiftAccessibilityLabel)
     }
 
-    private var deleteKey: some View {
+    private func deleteKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.deleteBackward()
         } label: {
             Image(systemName: "delete.left")
-                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                .frame(width: 46, height: keyHeight)
+                .font(.system(size: max(15, height * 0.36), weight: .semibold, design: .rounded))
+                .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -124,7 +146,7 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel("Delete")
     }
 
-    private var modeKey: some View {
+    private func modeKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             if viewModel.panel == .letters {
                 viewModel.showPanel(.numbers)
@@ -133,8 +155,8 @@ struct EnglishKeyboardView: View {
             }
         } label: {
             Text(modeKeyTitle)
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
-                .frame(width: 46, height: keyHeight)
+                .font(.system(size: max(13, height * 0.28), weight: .semibold, design: .rounded))
+                .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -142,7 +164,7 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel(modeAccessibilityLabel)
     }
 
-    private var symbolsToggleKey: some View {
+    private func symbolsToggleKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             if viewModel.panel == .numbers {
                 viewModel.showPanel(.symbols)
@@ -151,8 +173,8 @@ struct EnglishKeyboardView: View {
             }
         } label: {
             Text(viewModel.panel == .numbers ? "#+=" : "123")
-                .font(.system(size: 12, weight: .semibold, design: .rounded))
-                .frame(width: 42, height: keyHeight)
+                .font(.system(size: max(11, height * 0.24), weight: .semibold, design: .rounded))
+                .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -160,13 +182,13 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel(viewModel.panel == .numbers ? "Symbols" : "Numbers")
     }
 
-    private var globeKey: some View {
+    private func globeKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.nextKeyboard()
         } label: {
             Image(systemName: "globe")
-                .font(.system(size: 17, weight: .medium, design: .rounded))
-                .frame(width: 42, height: keyHeight)
+                .font(.system(size: max(16, height * 0.36), weight: .medium, design: .rounded))
+                .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -174,14 +196,13 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel("Next keyboard")
     }
 
-    private var spaceKey: some View {
+    private func spaceKey(height: CGFloat) -> some View {
         Button {
             viewModel.insertSpace()
         } label: {
             Text("space")
-                .font(.system(size: 15, weight: .medium, design: .rounded))
-                .frame(maxWidth: .infinity)
-                .frame(height: keyHeight)
+                .font(.system(size: max(14, height * 0.3), weight: .medium, design: .rounded))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(keyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -189,13 +210,13 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel("Space")
     }
 
-    private var emojiToggleKey: some View {
+    private func emojiToggleKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.showPanel(.emoji)
         } label: {
             Text("😊")
-                .font(.system(size: 22))
-                .frame(width: 42, height: keyHeight)
+                .font(.system(size: max(20, height * 0.45)))
+                .frame(width: width, height: height)
                 .background(actionKeyBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
@@ -203,13 +224,13 @@ struct EnglishKeyboardView: View {
         .accessibilityLabel("Emoji keyboard")
     }
 
-    private var returnKey: some View {
+    private func returnKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.insertReturn()
         } label: {
             Text("return")
-                .font(.system(size: 13, weight: .semibold, design: .rounded))
-                .frame(width: 72, height: keyHeight)
+                .font(.system(size: max(12, height * 0.26), weight: .semibold, design: .rounded))
+                .frame(width: width, height: height)
                 .background(returnBackground)
                 .foregroundStyle(returnForeground)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -280,8 +301,8 @@ struct EnglishKeyboardView: View {
         viewModel.panel == .letters ? "Numbers" : "Letters"
     }
 
-    private func letterSize(for label: String) -> CGFloat {
-        label.count > 1 ? 14 : 20
+    private func letterSize(for label: String, base: CGFloat) -> CGFloat {
+        label.count > 1 ? max(12, base * 0.7) : base
     }
 
     private func accessibilityName(for label: String) -> String {
@@ -295,8 +316,8 @@ struct EnglishKeyboardView: View {
 private struct KeyboardKeyButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.96 : 1)
-            .opacity(configuration.isPressed ? 0.85 : 1)
+            .scaleEffect(configuration.isPressed ? 0.97 : 1)
+            .opacity(configuration.isPressed ? 0.88 : 1)
             .animation(.easeOut(duration: 0.08), value: configuration.isPressed)
     }
 }

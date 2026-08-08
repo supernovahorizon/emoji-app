@@ -16,13 +16,14 @@ final class KeyboardViewController: UIInputViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Give the keyboard a comfortable typing height (portrait baseline).
         updateKeyboardHeight()
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Keep SwiftUI host glued to the full keyboard bounds (including bottom area).
         hostingController?.view.frame = view.bounds
+        updateKeyboardHeight()
     }
 
     override func textWillChange(_ textInput: UITextInput?) {
@@ -52,7 +53,6 @@ final class KeyboardViewController: UIInputViewController {
             loadFailed = true
         }
 
-        // Default to English letters so people can type immediately.
         let model = KeyboardViewModel(
             catalog: catalog,
             store: store,
@@ -62,10 +62,12 @@ final class KeyboardViewController: UIInputViewController {
         )
         self.viewModel = model
 
-        let root = KeyboardRootView(viewModel: model)
-        let host = UIHostingController(rootView: root)
+        let host = UIHostingController(rootView: KeyboardRootView(viewModel: model))
         host.view.backgroundColor = .clear
         host.view.translatesAutoresizingMaskIntoConstraints = false
+        // Draw into the home-indicator region so keys can fill the whole plate.
+        host.view.insetsLayoutMarginsFromSafeArea = false
+        host.safeAreaRegions = []
 
         addChild(host)
         view.addSubview(host.view)
@@ -78,17 +80,28 @@ final class KeyboardViewController: UIInputViewController {
         host.didMove(toParent: self)
         hostingController = host
 
-        let height = view.heightAnchor.constraint(equalToConstant: 280)
-        height.priority = .defaultHigh
+        // Priority required so the system actually grows the keyboard plate.
+        let height = view.heightAnchor.constraint(equalToConstant: Self.targetHeight())
+        height.priority = UILayoutPriority(999)
         height.isActive = true
         heightConstraint = height
     }
 
     private func updateKeyboardHeight() {
-        let screenHeight = UIScreen.main.bounds.height
-        // ~34% of screen feels natural for a full QWERTY board on phone.
-        let target = min(max(screenHeight * 0.34, 260), 320)
-        heightConstraint?.constant = target
+        heightConstraint?.constant = Self.targetHeight()
+    }
+
+    /// Match a full system-style keyboard footprint (fills the plate; keys scale inside).
+    private static func targetHeight() -> CGFloat {
+        let screen = UIScreen.main.bounds
+        let shortest = min(screen.width, screen.height)
+        let longest = max(screen.width, screen.height)
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        if isPad {
+            return min(max(longest * 0.28, 300), 380)
+        }
+        // iPhone: ~38% of short side feels like stock keyboard and removes empty gap.
+        return min(max(shortest * 0.42, 280), 340)
     }
 
     private static func fallbackCatalog() -> EmojiCatalog {

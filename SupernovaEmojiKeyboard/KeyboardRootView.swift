@@ -8,18 +8,19 @@ struct KeyboardRootView: View {
     private let columns = [GridItem(.adaptive(minimum: 44, maximum: 56), spacing: 6)]
 
     var body: some View {
-        VStack(spacing: 6) {
+        Group {
             if viewModel.panel == .emoji {
                 emojiChrome
             } else {
                 EnglishKeyboardView(viewModel: viewModel)
             }
         }
-        .padding(.horizontal, 4)
-        .padding(.top, 6)
-        .padding(.bottom, 4)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .padding(.horizontal, 3)
+        .padding(.top, 4)
+        .padding(.bottom, 2)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(backgroundColor)
+        .ignoresSafeArea(edges: .bottom)
         .accessibilityElement(children: .contain)
     }
 
@@ -40,8 +41,10 @@ struct KeyboardRootView: View {
         VStack(spacing: 6) {
             categoryBar
             emojiGrid
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             emojiActionBar
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var categoryBar: some View {
@@ -134,7 +137,7 @@ struct KeyboardRootView: View {
             } label: {
                 Image(systemName: "globe")
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .frame(minWidth: 44, minHeight: 40)
+                    .frame(minWidth: 44, minHeight: 44)
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Next keyboard")
@@ -144,7 +147,7 @@ struct KeyboardRootView: View {
             } label: {
                 Text("ABC")
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .frame(minWidth: 52, minHeight: 40)
+                    .frame(minWidth: 52, minHeight: 44)
                     .padding(.horizontal, 8)
                     .background(
                         RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -161,7 +164,7 @@ struct KeyboardRootView: View {
             } label: {
                 Image(systemName: "delete.left")
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .frame(minWidth: 44, minHeight: 40)
+                    .frame(minWidth: 44, minHeight: 44)
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Delete")
