@@ -7,7 +7,7 @@ struct ThemesView: View {
         NavigationStack {
             List {
                 Section {
-                    Text("Themes change keyboard chrome colors. Emoji glyphs use the system font.")
+                    Text("Themes change keyboard chrome. KATSEYE Pastel uses the asset-kit photo background on this personal build.")
                         .font(.callout)
                         .foregroundStyle(.secondary)
                         .listRowBackground(Color.clear)
@@ -25,13 +25,13 @@ struct ThemesView: View {
                                     Text(theme.name)
                                         .foregroundStyle(.primary)
                                     if theme.isDefault {
-                                        Text("Default · EYEKON energy")
+                                        Text("Default · pastel gem")
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }
                                 }
                                 Spacer()
-                                if preferences.themeId == theme.id {
+                                if KeyboardTheme.resolve(id: preferences.themeId).id == theme.id {
                                     Image(systemName: "checkmark.circle.fill")
                                         .foregroundStyle(Color.accentColor)
                                         .accessibilityLabel("Selected")
@@ -39,13 +39,15 @@ struct ThemesView: View {
                             }
                             .frame(minHeight: 44)
                         }
-                        .accessibilityAddTraits(preferences.themeId == theme.id ? .isSelected : [])
+                        .accessibilityAddTraits(
+                            KeyboardTheme.resolve(id: preferences.themeId).id == theme.id ? .isSelected : []
+                        )
                     }
                 }
 
                 Section("Preview") {
-                    KeyboardThemePreview(theme: preferences.theme)
-                        .frame(height: 140)
+                    KeyboardThemePreview(theme: KeyboardTheme.resolve(id: preferences.themeId))
+                        .frame(height: 160)
                         .listRowInsets(EdgeInsets())
                 }
             }
@@ -57,23 +59,32 @@ struct ThemesView: View {
     }
 
     private func themeSwatch(_ theme: KeyboardTheme) -> some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(swatchGradient(theme))
-            .frame(width: 36, height: 36)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
-            )
-            .accessibilityHidden(true)
+        ZStack {
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .fill(swatchGradient(theme))
+            if theme.isKatseyeFamily {
+                Image("katseyeCharmGemEye")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(6)
+            }
+        }
+        .frame(width: 40, height: 40)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
+        )
+        .accessibilityHidden(true)
     }
 
     private func swatchGradient(_ theme: KeyboardTheme) -> LinearGradient {
         switch theme.id {
-        case "katseye":
+        case KeyboardTheme.katseyePastel.id, "katseye":
             return LinearGradient(
                 colors: [
-                    Color(red: 1.0, green: 0.28, blue: 0.62),
-                    Color(red: 0.15, green: 0.05, blue: 0.2)
+                    Color(red: 0.94, green: 0.66, blue: 0.71),
+                    Color(red: 0.55, green: 0.79, blue: 0.87),
+                    Color(red: 0.93, green: 0.86, blue: 0.53)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -90,85 +101,74 @@ struct ThemesView: View {
 
 struct KeyboardThemePreview: View {
     let theme: KeyboardTheme
-    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         ZStack {
-            background
+            if theme.isKatseyeFamily {
+                Image("KatseyeAbstractBackground")
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                LinearGradient(
+                    colors: [Color.white.opacity(0.35), Color.white.opacity(0.2)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            } else {
+                Color(uiColor: .secondarySystemBackground)
+            }
+
             VStack(spacing: 10) {
-                if theme.id == "katseye" {
-                    Text("KATSEYE")
+                HStack(spacing: 6) {
+                    if theme.isKatseyeFamily {
+                        Image("katseyeCharmGemEye")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                    Text(theme.isKatseyeFamily ? "KATSEYE" : theme.name)
                         .font(.system(size: 12, weight: .bold, design: .rounded))
-                        .tracking(2)
-                        .foregroundStyle(Color(red: 1.0, green: 0.85, blue: 0.94))
+                        .tracking(1.2)
+                        .foregroundStyle(Color(red: 0.2, green: 0.17, blue: 0.23))
+                    Spacer()
                 }
+                .padding(.horizontal, 12)
+
                 HStack(spacing: 8) {
-                    previewKey("Q", fill: letterFill, text: letterText)
-                    previewKey("W", fill: letterFill, text: letterText)
-                    previewKey("E", fill: letterFill, text: letterText)
-                    previewKey("space", fill: letterFill, text: letterText, wide: true)
-                    previewKey("return", fill: returnFill, text: .white)
+                    previewKey("Q")
+                    previewKey("W")
+                    previewKey("E")
+                    previewKey("space", wide: true)
+                    previewKey("⏎", fill: Color(red: 0.94, green: 0.66, blue: 0.71))
+                }
+                .padding(.horizontal, 12)
+
+                HStack(spacing: 8) {
+                    charmChip("💎👁️✨")
+                    charmChip("🎀💗✨")
+                    charmChip("🎤⭐💫")
                 }
             }
-            .padding()
+            .padding(.vertical, 12)
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Theme preview for \(theme.name)")
     }
 
-    private func previewKey(_ title: String, fill: Color, text: Color, wide: Bool = false) -> some View {
+    private func previewKey(_ title: String, wide: Bool = false, fill: Color = Color.white.opacity(0.7)) -> some View {
         Text(title)
             .font(.system(size: wide ? 11 : 14, weight: .semibold, design: .rounded))
-            .foregroundStyle(text)
+            .foregroundStyle(Color(red: 0.2, green: 0.17, blue: 0.23))
             .frame(width: wide ? 72 : 36, height: 36)
             .background(RoundedRectangle(cornerRadius: 8).fill(fill))
+            .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.white.opacity(0.8), lineWidth: 1))
     }
 
-    private var background: some View {
-        Group {
-            switch theme.id {
-            case "katseye":
-                ZStack {
-                    Color(red: 0.07, green: 0.05, blue: 0.10)
-                    LinearGradient(
-                        colors: [
-                            Color(red: 0.85, green: 0.15, blue: 0.55).opacity(0.5),
-                            Color(red: 0.35, green: 0.08, blue: 0.55).opacity(0.35),
-                            .clear
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                }
-            case "soft":
-                (colorScheme == .dark ? Color(white: 0.18) : Color(red: 0.96, green: 0.95, blue: 0.98))
-            case "highContrast":
-                colorScheme == .dark ? Color.black : Color.white
-            default:
-                Color(uiColor: .secondarySystemBackground)
-            }
-        }
-    }
-
-    private var letterFill: Color {
-        switch theme.id {
-        case "katseye": return Color(red: 1.0, green: 0.78, blue: 0.90)
-        case "highContrast": return colorScheme == .dark ? Color(white: 0.2) : .white
-        default: return colorScheme == .dark ? Color(white: 0.34) : .white
-        }
-    }
-
-    private var letterText: Color {
-        switch theme.id {
-        case "katseye": return Color(red: 0.12, green: 0.06, blue: 0.16)
-        default: return .primary
-        }
-    }
-
-    private var returnFill: Color {
-        switch theme.id {
-        case "katseye": return Color(red: 1.0, green: 0.28, blue: 0.62)
-        default: return Color.accentColor
-        }
+    private func charmChip(_ text: String) -> some View {
+        Text(text)
+            .font(.system(size: 14))
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(Capsule().fill(Color.white.opacity(0.55)))
     }
 }
