@@ -81,3 +81,23 @@ xcodegen generate
 ```
 
 Only one agent may modify `project.yml` / generated project at a time.
+
+## Keyboard layout regression rules (do not break)
+
+The custom keyboard must never look “zoomed in” or fill most of the screen.
+
+1. **Board height** is owned by `KeyboardMetrics.boardHeight…` and is clamped:
+   - iPhone: about **246–286 pt**
+   - iPad: about **280–320 pt**
+2. **Key row height** is owned by `KeyboardMetrics.keyHeight` and is clamped:
+   - **38–46 pt** (never scale keys to an unbounded GeometryReader height)
+3. Use **Auto Layout only** for the keyboard host view — do **not** also set `host.view.frame` in `layoutSubviews` (that fights constraints and can inflate the plate).
+4. Prefer **bottom-aligned** key rows (system keyboard behavior).
+5. Wallpaper uses `scaledToFill` **clipped to the board**, not an unconstrained full-screen zoom.
+6. Before shipping keyboard layout changes, run:
+
+```bash
+make test
+```
+
+and confirm `KeyboardMetricsTests` pass. If you change clamps, update those tests deliberately.

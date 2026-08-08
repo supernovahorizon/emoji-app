@@ -7,22 +7,18 @@ struct EnglishKeyboardView: View {
     @ObservedObject var viewModel: KeyboardViewModel
     @Environment(\.colorScheme) private var colorScheme
 
-    private let keySpacing: CGFloat = 5
-    private let rowSpacing: CGFloat = 7
-
     private var palette: KeyboardThemePalette {
         KeyboardThemePalette(theme: viewModel.preferences.theme, colorScheme: colorScheme)
     }
 
     var body: some View {
         GeometryReader { geo in
-            let rowCount: CGFloat = 4
-            let totalRowSpacing = rowSpacing * (rowCount - 1)
-            let keyHeight = max(40, (geo.size.height - totalRowSpacing) / rowCount)
-            let letterFont = max(17, min(24, keyHeight * 0.42))
-            let sideKeyWidth = max(42, min(56, geo.size.width * 0.12))
+            // Clamped — never lets keys grow into a "zoomed" full-screen look.
+            let keyHeight = KeyboardMetrics.keyHeight(forContentHeight: geo.size.height)
+            let letterFont = KeyboardMetrics.letterFontSize(forKeyHeight: keyHeight)
+            let sideKeyWidth = KeyboardMetrics.sideKeyWidth(forBoardWidth: geo.size.width)
 
-            VStack(spacing: rowSpacing) {
+            VStack(spacing: KeyboardMetrics.rowSpacing) {
                 ForEach(Array(rows.enumerated()), id: \.offset) { index, row in
                     keyRow(
                         row,
@@ -34,7 +30,8 @@ struct EnglishKeyboardView: View {
                 }
                 bottomRow(keyHeight: keyHeight, sideKeyWidth: sideKeyWidth)
             }
-            .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
+            // Pin rows to the bottom like the system keyboard (home-indicator side).
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .bottom)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -62,7 +59,7 @@ struct EnglishKeyboardView: View {
         letterFont: CGFloat,
         sideKeyWidth: CGFloat
     ) -> some View {
-        HStack(spacing: keySpacing) {
+        HStack(spacing: KeyboardMetrics.keySpacing) {
             if isThirdLetterRow {
                 shiftKey(height: keyHeight, width: sideKeyWidth)
             } else if viewModel.panel != .letters, keys.count <= 5 {
@@ -84,7 +81,7 @@ struct EnglishKeyboardView: View {
     }
 
     private func bottomRow(keyHeight: CGFloat, sideKeyWidth: CGFloat) -> some View {
-        HStack(spacing: keySpacing) {
+        HStack(spacing: KeyboardMetrics.keySpacing) {
             modeKey(height: keyHeight, width: sideKeyWidth)
             if viewModel.panel == .numbers || viewModel.panel == .symbols {
                 symbolsToggleKey(height: keyHeight, width: sideKeyWidth * 0.9)

@@ -37,19 +37,20 @@ struct KeyboardRootView: View {
 
     private var katseyeWallpaper: some View {
         ZStack {
-            if let _ = UIImage(named: "KatseyeBackground") {
+            // Aspect-fill clipped to the board — not a full-screen zoom crop.
+            GeometryReader { geo in
                 Image("KatseyeBackground")
                     .resizable()
                     .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(width: geo.size.width, height: geo.size.height)
                     .clipped()
             }
             // Slight dark veil so white lettering always pops
             LinearGradient(
                 colors: [
-                    Color.black.opacity(0.25),
-                    Color.black.opacity(0.15),
-                    Color.black.opacity(0.35)
+                    Color.black.opacity(0.28),
+                    Color.black.opacity(0.18),
+                    Color.black.opacity(0.38)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
