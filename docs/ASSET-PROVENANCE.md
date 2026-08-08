@@ -62,3 +62,16 @@ This project does **not** claim ownership of third-party KATSEYE photography, tr
 | `SupernovaEmoji/Assets.xcassets/AppIcon.appiconset/AppIcon.png` | 1024×1024 RGB, white bg, safe margin |
 
 Apple requires 1024×1024 app icons without transparency. Trademark: HYBE/Geffen — personal/local use only.
+
+## App icon (official symbol)
+
+Downloaded from the official KATSEYE shop CDN:
+
+`https://shop.katseye.world/cdn/shop/files/04_KATSEYE_Symbol_Black.png`
+
+| Path | Notes |
+|------|--------|
+| `docs/assets/official-katseye-symbol-source.png` | Downloaded source |
+| `SupernovaEmoji/Assets.xcassets/AppIcon.appiconset/AppIcon.png` | **1024×1024 RGB**, white background, ~18% safe margin, no alpha |
+
+Trademark: HYBE / Geffen — personal/local development use only; commercial distribution requires license.
