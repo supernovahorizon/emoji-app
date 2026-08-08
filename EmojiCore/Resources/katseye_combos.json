@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "combos": [
+    {
+      "id": "combo.gem-eye",
+      "title": "Gem Eye",
+      "value": "💎👁️✨"
+    },
+    {
+      "id": "combo.pastel-pop",
+      "title": "Pastel Pop",
+      "value": "🎀💗✨"
+    },
+    {
+      "id": "combo.stage",
+      "title": "Stage Sparkle",
+      "value": "🎤⭐💫"
+    },
+    {
+      "id": "combo.music",
+      "title": "Headphones",
+      "value": "🎧💜🎶"
+    },
+    {
+      "id": "combo.butterfly",
+      "title": "Butterfly Dream",
+      "value": "🦋🩵✨"
+    },
+    {
+      "id": "combo.prism",
+      "title": "Prism",
+      "value": "🌈💎⭐"
+    },
+    {
+      "id": "combo.camera",
+      "title": "Photo Moment",
+      "value": "📸💗✨"
+    },
+    {
+      "id": "combo.charm",
+      "title": "Charm",
+      "value": "🪩🎀💫"
+    },
+    {
+      "id": "combo.soft",
+      "title": "Soft Power",
+      "value": "🌸🦋💖"
+    },
+    {
+      "id": "combo.six",
+      "title": "Six Sparkles",
+      "value": "✨✨✨✨✨✨"
+    },
+    {
+      "id": "combo.lilac",
+      "title": "Lilac Night",
+      "value": "💜🌙⭐"
+    },
+    {
+      "id": "combo.celebrate",
+      "title": "Celebrate",
+      "value": "🎉💎💗"
+    }
+  ]
+}
