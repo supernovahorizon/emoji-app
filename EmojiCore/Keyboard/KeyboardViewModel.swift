@@ -5,11 +5,14 @@ import Combine
 @MainActor
 public final class KeyboardViewModel: ObservableObject {
     @Published public private(set) var catalog: EmojiCatalog
+    @Published public private(set) var stickerCatalog: KatseyeStickerCatalog
     @Published public private(set) var preferences: KeyboardPreferences
     @Published public var selectedCategoryId: String
     @Published public private(set) var loadFailed: Bool
     @Published public var panel: KeyboardPanel
     @Published public var shiftState: ShiftState
+    /// Optional filter inside KATSEYE pack (`nil` = all members).
+    @Published public var selectedMemberFilter: String?
 
     private let store: any KeyboardPreferencesStore
     private let input: any TextInputHandling
@@ -19,16 +22,18 @@ public final class KeyboardViewModel: ObservableObject {
         store: any KeyboardPreferencesStore,
         input: any TextInputHandling,
         loadFailed: Bool = false,
-        initialPanel: KeyboardPanel = .letters
+        initialPanel: KeyboardPanel = .letters,
+        stickerCatalog: KatseyeStickerCatalog = KatseyeStickerCatalog(stickers: [])
     ) {
         self.catalog = catalog
+        self.stickerCatalog = stickerCatalog
         self.store = store
         self.input = input
         self.loadFailed = loadFailed
         self.panel = initialPanel
         self.shiftState = .off
+        self.selectedMemberFilter = nil
         var prefs = store.load()
-        // Migrate older theme ids to KATSEYE pastel.
         let legacy = ["system", "katseye", "pastelGem"]
         if legacy.contains(prefs.themeId) {
             prefs.themeId = KeyboardTheme.katseyePastel.id
@@ -55,16 +60,29 @@ public final class KeyboardViewModel: ObservableObject {
         return list.sorted { $0.sortOrder < $1.sortOrder }
     }
 
+    /// Unicode emoji for non-KATSEYE categories (and favorites of those).
     public var visibleItems: [EmojiItem] {
         if selectedCategoryId == "favorites" {
             let favs = catalog.items(ids: preferences.favoriteIds)
             if !favs.isEmpty { return favs }
             return catalog.items(ids: preferences.recentIds)
         }
+        if selectedCategoryId == "katseye" {
+            return []
+        }
         return catalog.items(in: selectedCategoryId)
     }
 
-    /// Whether letter keys should show uppercase glyphs.
+    /// Facemoji-style member stickers for the KATSEYE tab.
+    public var visibleStickers: [KatseyeSticker] {
+        guard selectedCategoryId == "katseye" else { return [] }
+        return stickerCatalog.stickers(forMember: selectedMemberFilter)
+    }
+
+    public var isKatseyeStickerMode: Bool {
+        selectedCategoryId == "katseye" && !stickerCatalog.stickers.isEmpty
+    }
+
     public var isUppercase: Bool {
         shiftState != .off
     }
@@ -72,7 +90,14 @@ public final class KeyboardViewModel: ObservableObject {
     public func selectCategory(_ id: String) {
         selectedCategoryId = id
         preferences.selectedCategoryId = id
+        if id != "katseye" {
+            selectedMemberFilter = nil
+        }
         persist()
+    }
+
+    public func selectMemberFilter(_ memberId: String?) {
+        selectedMemberFilter = memberId
     }
 
     public func showPanel(_ panel: KeyboardPanel) {
@@ -123,6 +148,17 @@ public final class KeyboardViewModel: ObservableObject {
     public func insertEmoji(_ item: EmojiItem) {
         input.insertText(item.glyph)
         preferences.addRecent(id: item.id)
+        persist()
+    }
+
+    /// Insert a KATSEYE sticker: copy PNG when possible + text fallback for every host app.
+    public func insertSticker(_ sticker: KatseyeSticker, imagePNGData: Data?) {
+        if let imagePNGData {
+            input.copyImageData(imagePNGData, uti: "public.png")
+        }
+        // Always insert a short reaction so typing works without Full Access.
+        input.insertText(sticker.fallbackText)
+        preferences.addRecent(id: sticker.id)
         persist()
     }
 

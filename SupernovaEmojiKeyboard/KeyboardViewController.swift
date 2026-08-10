@@ -53,12 +53,20 @@ final class KeyboardViewController: UIInputViewController {
             loadFailed = true
         }
 
+        let stickers: KatseyeStickerCatalog
+        do {
+            stickers = try KatseyeStickerCatalog.loadBundled(in: Bundle(for: KeyboardViewController.self))
+        } catch {
+            stickers = KatseyeStickerCatalog(stickers: [])
+        }
+
         let model = KeyboardViewModel(
             catalog: catalog,
             store: store,
             input: adapter,
             loadFailed: loadFailed,
-            initialPanel: .letters
+            initialPanel: .letters,
+            stickerCatalog: stickers
         )
         self.viewModel = model
 
@@ -134,5 +142,15 @@ final class ProxyTextInputHandler: TextInputHandling {
 
     func advanceToNextInputMode() {
         controller?.advanceToNextInputMode()
+    }
+
+    func copyImageData(_ data: Data, uti: String) {
+        // Best-effort sticker copy. Host apps that accept paste will get the image.
+        // Does not log content. Full Access is not required to set the pasteboard
+        // from a keyboard in current iOS, but some hosts still only accept text.
+        UIPasteboard.general.setData(data, forPasteboardType: uti)
+        if let image = UIImage(data: data) {
+            UIPasteboard.general.image = image
+        }
     }
 }

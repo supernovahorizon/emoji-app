@@ -26,6 +26,33 @@ final class KeyboardViewModelTests: XCTestCase {
         XCTAssertEqual(store.load().selectedCategoryId, "smileys")
     }
 
+    func testStickerInsertCopiesImageAndFallbackText() {
+        let input = RecordingTextInputHandler()
+        let stickers = KatseyeStickerCatalog(stickers: [
+            KatseyeSticker(
+                id: "sticker_lara_happy",
+                memberId: "lara",
+                memberName: "Lara",
+                expression: "happy",
+                asset: "katseye_lara_happy",
+                name: "Lara · happy",
+                fallbackText: "😊"
+            )
+        ])
+        let vm = KeyboardViewModel(
+            catalog: makeCatalog(),
+            store: InMemoryPreferencesStore(),
+            input: input,
+            stickerCatalog: stickers
+        )
+        vm.selectCategory("katseye")
+        XCTAssertTrue(vm.isKatseyeStickerMode)
+        XCTAssertEqual(vm.visibleStickers.count, 1)
+        vm.insertSticker(stickers.stickers[0], imagePNGData: Data([0x89, 0x50]))
+        XCTAssertTrue(input.actions.contains(.insert("😊")))
+        XCTAssertTrue(input.actions.contains(.copyImage(2)))
+    }
+
     func testInsertDispatchesAndAddsRecent() {
         let store = InMemoryPreferencesStore()
         let input = RecordingTextInputHandler()

@@ -263,7 +263,9 @@ struct EnglishKeyboardView: View {
     private func emojiToggleKey(height: CGFloat, width: CGFloat) -> some View {
         Button {
             viewModel.showPanel(.emoji)
-            viewModel.selectCategory("katseye")
+            if !viewModel.stickerCatalog.stickers.isEmpty {
+                viewModel.selectCategory("katseye")
+            }
         } label: {
             Group {
                 if palette.isKatseye {
