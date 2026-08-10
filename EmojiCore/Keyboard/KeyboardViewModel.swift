@@ -151,13 +151,13 @@ public final class KeyboardViewModel: ObservableObject {
         persist()
     }
 
-    /// Insert a KATSEYE sticker: copy PNG when possible + text fallback for every host app.
+    /// Insert a KATSEYE sticker as an **image** on the pasteboard (how it looks in the pack).
+    /// We intentionally do **not** insert a plain Unicode smiley — that looked wrong.
+    /// Host apps (Notes/Messages) show the sticker after the user pastes (long-press → Paste).
     public func insertSticker(_ sticker: KatseyeSticker, imagePNGData: Data?) {
         if let imagePNGData {
             input.copyImageData(imagePNGData, uti: "public.png")
         }
-        // Always insert a short reaction so typing works without Full Access.
-        input.insertText(sticker.fallbackText)
         preferences.addRecent(id: sticker.id)
         persist()
     }

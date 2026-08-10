@@ -49,7 +49,8 @@ final class KeyboardViewModelTests: XCTestCase {
         XCTAssertTrue(vm.isKatseyeStickerMode)
         XCTAssertEqual(vm.visibleStickers.count, 1)
         vm.insertSticker(stickers.stickers[0], imagePNGData: Data([0x89, 0x50]))
-        XCTAssertTrue(input.actions.contains(.insert("😊")))
+        // Stickers copy as images — no misleading Unicode smiley insert.
+        XCTAssertFalse(input.actions.contains(.insert("😊")))
         XCTAssertTrue(input.actions.contains(.copyImage(2)))
     }
 

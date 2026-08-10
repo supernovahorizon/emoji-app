@@ -5,6 +5,7 @@ struct KeyboardRootView: View {
     @ObservedObject var viewModel: KeyboardViewModel
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var stickerToast: String?
 
     private let columns = [GridItem(.adaptive(minimum: 44, maximum: 56), spacing: 6)]
 
@@ -131,31 +132,50 @@ struct KeyboardRootView: View {
                     .foregroundStyle(palette.secondaryLabel)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                ScrollView {
-                    LazyVGrid(columns: stickerColumns, spacing: 8) {
-                        ForEach(viewModel.visibleStickers) { sticker in
-                            Button {
-                                let data = UIImage(named: sticker.asset)?.pngData()
-                                viewModel.insertSticker(sticker, imagePNGData: data)
-                            } label: {
-                                Image(sticker.asset)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(minWidth: 56, minHeight: 56)
-                                    .frame(maxWidth: 72, maxHeight: 72)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                            .fill(Color.white.opacity(0.55))
-                                    )
-                                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                                    .contentShape(Rectangle())
+                ZStack(alignment: .bottom) {
+                    ScrollView {
+                        LazyVGrid(columns: stickerColumns, spacing: 8) {
+                            ForEach(viewModel.visibleStickers) { sticker in
+                                Button {
+                                    let data = UIImage(named: sticker.asset)?.pngData()
+                                    viewModel.insertSticker(sticker, imagePNGData: data)
+                                    stickerToast = "Sticker copied · long-press text box → Paste"
+                                    Task { @MainActor in
+                                        try? await Task.sleep(nanoseconds: 2_200_000_000)
+                                        if stickerToast != nil { stickerToast = nil }
+                                    }
+                                } label: {
+                                    Image(sticker.asset)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(minWidth: 56, minHeight: 56)
+                                        .frame(maxWidth: 72, maxHeight: 72)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                                .fill(Color.white.opacity(0.55))
+                                        )
+                                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                        .contentShape(Rectangle())
+                                }
+                                .buttonStyle(.plain)
+                                .accessibilityLabel(sticker.name)
+                                .accessibilityHint("Copies sticker image. Paste into the text field.")
                             }
-                            .buttonStyle(.plain)
-                            .accessibilityLabel(sticker.name)
                         }
+                        .padding(.horizontal, 4)
+                        .padding(.bottom, 28)
                     }
-                    .padding(.horizontal, 4)
-                    .padding(.bottom, 4)
+
+                    if let stickerToast {
+                        Text(stickerToast)
+                            .font(.system(size: 11, weight: .semibold, design: .rounded))
+                            .foregroundStyle(palette.primaryLabel)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(.ultraThinMaterial, in: Capsule())
+                            .padding(.bottom, 4)
+                            .transition(.opacity)
+                    }
                 }
             }
         }

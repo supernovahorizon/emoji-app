@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "style": "realistic-facemoji-3d",
   "eyesRule": "Always real eyes with pupils; never heart-eyes",
+  "identityNote": "Sophia/Yoonchae swapped to match promo photo L-R; Megan uses former mislabeled Manon cool/cute frames",
   "stickers": [
     {
       "id": "sticker_lara_happy",
@@ -10,42 +11,6 @@
       "expression": "happy",
       "asset": "katseye_lara_happy",
       "name": "Lara \u00b7 happy",
-      "fallbackText": "\ud83d\ude0a"
-    },
-    {
-      "id": "sticker_sophia_happy",
-      "memberId": "sophia",
-      "memberName": "Sophia",
-      "expression": "happy",
-      "asset": "katseye_sophia_happy",
-      "name": "Sophia \u00b7 happy",
-      "fallbackText": "\ud83d\ude0a"
-    },
-    {
-      "id": "sticker_daniela_happy",
-      "memberId": "daniela",
-      "memberName": "Daniela",
-      "expression": "happy",
-      "asset": "katseye_daniela_happy",
-      "name": "Daniela \u00b7 happy",
-      "fallbackText": "\ud83d\ude0a"
-    },
-    {
-      "id": "sticker_manon_happy",
-      "memberId": "manon",
-      "memberName": "Manon",
-      "expression": "happy",
-      "asset": "katseye_manon_happy",
-      "name": "Manon \u00b7 happy",
-      "fallbackText": "\ud83d\ude0a"
-    },
-    {
-      "id": "sticker_yoonchae_happy",
-      "memberId": "yoonchae",
-      "memberName": "Yoonchae",
-      "expression": "happy",
-      "asset": "katseye_yoonchae_happy",
-      "name": "Yoonchae \u00b7 happy",
       "fallbackText": "\ud83d\ude0a"
     },
     {
@@ -58,42 +23,6 @@
       "fallbackText": "\ud83c\udfa4"
     },
     {
-      "id": "sticker_sophia_sing",
-      "memberId": "sophia",
-      "memberName": "Sophia",
-      "expression": "sing",
-      "asset": "katseye_sophia_sing",
-      "name": "Sophia \u00b7 sing",
-      "fallbackText": "\ud83c\udfa4"
-    },
-    {
-      "id": "sticker_daniela_sing",
-      "memberId": "daniela",
-      "memberName": "Daniela",
-      "expression": "sing",
-      "asset": "katseye_daniela_sing",
-      "name": "Daniela \u00b7 sing",
-      "fallbackText": "\ud83c\udfa4"
-    },
-    {
-      "id": "sticker_manon_sing",
-      "memberId": "manon",
-      "memberName": "Manon",
-      "expression": "sing",
-      "asset": "katseye_manon_sing",
-      "name": "Manon \u00b7 sing",
-      "fallbackText": "\ud83c\udfa4"
-    },
-    {
-      "id": "sticker_yoonchae_sing",
-      "memberId": "yoonchae",
-      "memberName": "Yoonchae",
-      "expression": "sing",
-      "asset": "katseye_yoonchae_sing",
-      "name": "Yoonchae \u00b7 sing",
-      "fallbackText": "\ud83c\udfa4"
-    },
-    {
       "id": "sticker_lara_cool",
       "memberId": "lara",
       "memberName": "Lara",
@@ -101,6 +30,33 @@
       "asset": "katseye_lara_cool",
       "name": "Lara \u00b7 cool",
       "fallbackText": "\ud83d\ude0e"
+    },
+    {
+      "id": "sticker_lara_cute",
+      "memberId": "lara",
+      "memberName": "Lara",
+      "expression": "cute",
+      "asset": "katseye_lara_cute",
+      "name": "Lara \u00b7 cute",
+      "fallbackText": "\ud83d\ude0c"
+    },
+    {
+      "id": "sticker_sophia_happy",
+      "memberId": "sophia",
+      "memberName": "Sophia",
+      "expression": "happy",
+      "asset": "katseye_sophia_happy",
+      "name": "Sophia \u00b7 happy",
+      "fallbackText": "\ud83d\ude0a"
+    },
+    {
+      "id": "sticker_sophia_sing",
+      "memberId": "sophia",
+      "memberName": "Sophia",
+      "expression": "sing",
+      "asset": "katseye_sophia_sing",
+      "name": "Sophia \u00b7 sing",
+      "fallbackText": "\ud83c\udfa4"
     },
     {
       "id": "sticker_sophia_cool",
@@ -112,6 +68,33 @@
       "fallbackText": "\ud83d\ude0e"
     },
     {
+      "id": "sticker_sophia_cute",
+      "memberId": "sophia",
+      "memberName": "Sophia",
+      "expression": "cute",
+      "asset": "katseye_sophia_cute",
+      "name": "Sophia \u00b7 cute",
+      "fallbackText": "\ud83d\ude0c"
+    },
+    {
+      "id": "sticker_daniela_happy",
+      "memberId": "daniela",
+      "memberName": "Daniela",
+      "expression": "happy",
+      "asset": "katseye_daniela_happy",
+      "name": "Daniela \u00b7 happy",
+      "fallbackText": "\ud83d\ude0a"
+    },
+    {
+      "id": "sticker_daniela_sing",
+      "memberId": "daniela",
+      "memberName": "Daniela",
+      "expression": "sing",
+      "asset": "katseye_daniela_sing",
+      "name": "Daniela \u00b7 sing",
+      "fallbackText": "\ud83c\udfa4"
+    },
+    {
       "id": "sticker_daniela_cool",
       "memberId": "daniela",
       "memberName": "Daniela",
@@ -119,6 +102,33 @@
       "asset": "katseye_daniela_cool",
       "name": "Daniela \u00b7 cool",
       "fallbackText": "\ud83d\ude0e"
+    },
+    {
+      "id": "sticker_daniela_cute",
+      "memberId": "daniela",
+      "memberName": "Daniela",
+      "expression": "cute",
+      "asset": "katseye_daniela_cute",
+      "name": "Daniela \u00b7 cute",
+      "fallbackText": "\ud83d\ude0c"
+    },
+    {
+      "id": "sticker_manon_happy",
+      "memberId": "manon",
+      "memberName": "Manon",
+      "expression": "happy",
+      "asset": "katseye_manon_happy",
+      "name": "Manon \u00b7 happy",
+      "fallbackText": "\ud83d\ude0a"
+    },
+    {
+      "id": "sticker_manon_sing",
+      "memberId": "manon",
+      "memberName": "Manon",
+      "expression": "sing",
+      "asset": "katseye_manon_sing",
+      "name": "Manon \u00b7 sing",
+      "fallbackText": "\ud83c\udfa4"
     },
     {
       "id": "sticker_manon_cool",
@@ -130,58 +140,13 @@
       "fallbackText": "\ud83d\ude0e"
     },
     {
-      "id": "sticker_yoonchae_cool",
-      "memberId": "yoonchae",
-      "memberName": "Yoonchae",
-      "expression": "cool",
-      "asset": "katseye_yoonchae_cool",
-      "name": "Yoonchae \u00b7 cool",
-      "fallbackText": "\ud83d\ude0e"
-    },
-    {
-      "id": "sticker_lara_cute",
-      "memberId": "lara",
-      "memberName": "Lara",
-      "expression": "cute",
-      "asset": "katseye_lara_cute",
-      "name": "Lara \u00b7 cute",
-      "fallbackText": "\ud83e\udd70"
-    },
-    {
-      "id": "sticker_sophia_cute",
-      "memberId": "sophia",
-      "memberName": "Sophia",
-      "expression": "cute",
-      "asset": "katseye_sophia_cute",
-      "name": "Sophia \u00b7 cute",
-      "fallbackText": "\ud83e\udd70"
-    },
-    {
-      "id": "sticker_daniela_cute",
-      "memberId": "daniela",
-      "memberName": "Daniela",
-      "expression": "cute",
-      "asset": "katseye_daniela_cute",
-      "name": "Daniela \u00b7 cute",
-      "fallbackText": "\ud83e\udd70"
-    },
-    {
       "id": "sticker_manon_cute",
       "memberId": "manon",
       "memberName": "Manon",
       "expression": "cute",
       "asset": "katseye_manon_cute",
       "name": "Manon \u00b7 cute",
-      "fallbackText": "\ud83e\udd70"
-    },
-    {
-      "id": "sticker_yoonchae_cute",
-      "memberId": "yoonchae",
-      "memberName": "Yoonchae",
-      "expression": "cute",
-      "asset": "katseye_yoonchae_cute",
-      "name": "Yoonchae \u00b7 cute",
-      "fallbackText": "\ud83e\udd70"
+      "fallbackText": "\ud83d\ude0c"
     },
     {
       "id": "sticker_megan_happy",
@@ -191,15 +156,6 @@
       "asset": "katseye_megan_happy",
       "name": "Megan \u00b7 happy",
       "fallbackText": "\ud83d\ude0a"
-    },
-    {
-      "id": "sticker_megan_wink",
-      "memberId": "megan",
-      "memberName": "Megan",
-      "expression": "wink",
-      "asset": "katseye_megan_wink",
-      "name": "Megan \u00b7 wink",
-      "fallbackText": "\ud83d\ude09"
     },
     {
       "id": "sticker_megan_sing",
@@ -218,6 +174,60 @@
       "asset": "katseye_megan_cool",
       "name": "Megan \u00b7 cool",
       "fallbackText": "\ud83d\ude0e"
+    },
+    {
+      "id": "sticker_megan_cute",
+      "memberId": "megan",
+      "memberName": "Megan",
+      "expression": "cute",
+      "asset": "katseye_megan_cute",
+      "name": "Megan \u00b7 cute",
+      "fallbackText": "\ud83d\ude0c"
+    },
+    {
+      "id": "sticker_megan_wink",
+      "memberId": "megan",
+      "memberName": "Megan",
+      "expression": "wink",
+      "asset": "katseye_megan_wink",
+      "name": "Megan \u00b7 wink",
+      "fallbackText": "\ud83d\ude09"
+    },
+    {
+      "id": "sticker_yoonchae_happy",
+      "memberId": "yoonchae",
+      "memberName": "Yoonchae",
+      "expression": "happy",
+      "asset": "katseye_yoonchae_happy",
+      "name": "Yoonchae \u00b7 happy",
+      "fallbackText": "\ud83d\ude0a"
+    },
+    {
+      "id": "sticker_yoonchae_sing",
+      "memberId": "yoonchae",
+      "memberName": "Yoonchae",
+      "expression": "sing",
+      "asset": "katseye_yoonchae_sing",
+      "name": "Yoonchae \u00b7 sing",
+      "fallbackText": "\ud83c\udfa4"
+    },
+    {
+      "id": "sticker_yoonchae_cool",
+      "memberId": "yoonchae",
+      "memberName": "Yoonchae",
+      "expression": "cool",
+      "asset": "katseye_yoonchae_cool",
+      "name": "Yoonchae \u00b7 cool",
+      "fallbackText": "\ud83d\ude0e"
+    },
+    {
+      "id": "sticker_yoonchae_cute",
+      "memberId": "yoonchae",
+      "memberName": "Yoonchae",
+      "expression": "cute",
+      "asset": "katseye_yoonchae_cute",
+      "name": "Yoonchae \u00b7 cute",
+      "fallbackText": "\ud83d\ude0c"
     }
   ]
 }
